@@ -13,6 +13,7 @@
         {{ HTML::style('css/bootstrap-theme.min.css') }}
         {{ HTML::style('css/sb-admin.css') }}
         {{ HTML::style('css/custom.css') }}
+        {{ HTML::style('css/table_sorter/bootstrap-sortable.css') }}
         
         @yield('header')
     </head>
@@ -97,6 +98,9 @@
         {{ HTML::script('http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') }}
         {{ HTML::script('js/bootstrap.min.js') }}
         {{ HTML::script('js/jquery-1.10.2.js') }}
+
+        {{ HTML::script('js/table_sorter/bootstrap-sortable.js') }}
+        {{ HTML::script('js/table_sorter/moment.min.js') }}
        
        @yield('footer')
 

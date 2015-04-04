@@ -21,7 +21,7 @@
     @endif
 
 	<div class="table-responsive" >
-        <table  id="tablesorter-table"  align="center" style="color:black" class="table table-striped display tablesorter" id="main-table" border=0>
+        <table  id="tablesorter-table"  align="center" style="color:black" class="table table-striped display tablesorter sortable" id="main-table" border=0>
         <thead>
             <tr>
                 <th>User ID</th>
