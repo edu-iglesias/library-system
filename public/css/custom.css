@@ -1,0 +1,14 @@
+.form-create{
+	background: white;
+	padding: 45px 10px;
+	width: 100%;
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,.13);
+	box-shadow: 0 1px 3px rgba(0,0,0,.13);
+	margin: auto;
+}
+
+
+body {
+  background-color: #F5FEF2;
+  padding-bottom: 0px;
+}

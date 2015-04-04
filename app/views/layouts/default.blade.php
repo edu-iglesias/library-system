@@ -12,6 +12,7 @@
         {{ HTML::style('css/bootstrap.min.css') }}
         {{ HTML::style('css/bootstrap-theme.min.css') }}
         {{ HTML::style('css/sb-admin.css') }}
+        {{ HTML::style('css/custom.css') }}
 
         
         @yield('header')

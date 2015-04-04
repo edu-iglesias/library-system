@@ -28,3 +28,4 @@ Route::get('/user', function()
 
 Route::get('/admin/users/create', 'UserController@create');
 Route::post('/admin/users/create', 'UserController@store');
+Route::get('/admin/users', 'UserController@index');
