@@ -7,7 +7,8 @@ class UserController extends BaseController {
 		$users = DB::table('users') 
 		 ->join('assigned_roles', 'users.id', '=', 'assigned_roles.user_id')
 		 ->join('roles', 'assigned_roles.role_id', '=', 'roles.id')
-		 ->paginate(1);
+		 ->select('*', 'users.id')
+		 ->paginate(10);
 
 		return View::make('admin.list_user')->with('users',$users);
 	}
@@ -63,8 +64,23 @@ class UserController extends BaseController {
 		}
 	}
 
+	public function activate($id)
+	{
+		$user = User::find($id);
+		$user->status = 1;
+		$user->update();
+		Session::put('status', "You have successfully activated the user.");
+		return Redirect::back();
+	}
 
 
-
+	public function deactivate($id)
+	{
+		$user = User::find($id);
+		$user->status = 0;
+		$user->update();
+		Session::put('status', "You have successfully deactivated the user.");
+		return Redirect::back();
+	}
 
 }

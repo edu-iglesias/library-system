@@ -29,3 +29,7 @@ Route::get('/user', function()
 Route::get('/admin/users/create', 'UserController@create');
 Route::post('/admin/users/create', 'UserController@store');
 Route::get('/admin/users', 'UserController@index');
+Route::get('/admin/users/activate/{id}', 'UserController@activate');
+Route::get('/admin/users/deactivate/{id}', 'UserController@deactivate');
+
+
