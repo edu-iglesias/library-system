@@ -2,7 +2,8 @@
     <head>
         <title>Library System</title>
         {{HTML::style('css/user/bootstrap.min.css');}}
-
+        {{HTML::style('css/glyphicons.css');}}
+        {{HTML::style('css/ionic.css');}}
         {{HTML::script('js/user/jquery-1.11.0.min.js');}}
         {{HTML::script('js/user/bootstrap.min.js');}}
 
@@ -32,9 +33,10 @@
                 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
                     <ul class="nav navbar-nav">
                         <li style="margin-right: -100px;"><img src="../images/banner.png" style="margin: 10px; width: 45%;"></li>
-                        <li class="#active"><a href="/webDash" class=""><span class="glyphicon glyphicon-user" style="color: #27AE60; font-size: 18px; margin-right: 5px;"></span>User Accounts</a></li>
-                        <li><a href="/webStores"><span class="glyphicon glyphicon-shopping-cart" style="color: #C0392B; font-size: 18px; margin-right: 5px;"></span>Stores</a></li>
-                        <li><a href="/webQuestions"><span class="glyphicon glyphicon-question-sign" style="color: #3366FF; font-size: 18px; margin-right: 5px;"></span>Questions</a></li>
+                        <li class="#active"><a href="#" class=""><span class="ion-person" style="color: #27AE60; font-size: 20px; margin-right: 5px;"></span>Profile</a></li>
+                        <li><a href="#"><span class="ion-clipboard" style="color: #C0392B; font-size: 20px; margin-right: 5px;"></span>List of Books</a></li>
+                        <li><a href="#"><span class="ion-star" style="color: #FFFF00; font-size: 20px; margin-right: 5px;"></span>Borrowed Books</a></li>
+                        <li><a href="#"><span class="ion-android-folder" style="color: #3366FF; font-size: 20px; margin-right: 5px;"></span>Archives</a></li>
                         <!-- <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
@@ -48,7 +50,7 @@
                             </ul>
                         </li> -->
                     </ul>
-                    <a href="/webLogout" title="Logout" style="float: right;"><button class="btn btn-danger" style="margin: 10px;"><span class="glyphicon glyphicon-off" style="margin-bottom: 3px; "></span></button></a>
+                    <a href="#" title="Logout" style="float: right;"><button class="btn btn-danger" style="margin: 10px;"><span class="ion-power" style="margin-bottom: 3px; "></span></button></a>
                 </nav>
          
 
