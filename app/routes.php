@@ -21,5 +21,10 @@ Route::get('/admin', function()
 	return View::make('admin.index');
 });
 
+Route::get('/user', function()
+{
+	return View::make('user.index');
+});
+
 Route::get('/admin/users/create', 'UserController@create');
 Route::post('/admin/users/create', 'UserController@store');
