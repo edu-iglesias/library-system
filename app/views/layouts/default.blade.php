@@ -13,7 +13,6 @@
         {{ HTML::style('css/bootstrap-theme.min.css') }}
         {{ HTML::style('css/sb-admin.css') }}
         {{ HTML::style('css/custom.css') }}
-
         
         @yield('header')
     </head>
@@ -40,7 +39,7 @@
                             <a href="/" style="border-bottom: solid 1px rgba(0, 0, 0, 0.2);">Dashboard</a>
                         </li>
                         <li class="">
-                            <a href="/" style="border-bottom: solid 1px rgba(0, 0, 0, 0.2);">Manage User</a>
+                            <a href="/admin/users" style="border-bottom: solid 1px rgba(0, 0, 0, 0.2);">Manage User</a>
                         </li>
                         <li class="">
                             <a href="/" style="border-bottom: solid 1px rgba(0, 0, 0, 0.2);">Manage Book</a>

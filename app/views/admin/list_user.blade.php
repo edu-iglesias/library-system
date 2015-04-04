@@ -2,7 +2,14 @@
 
 @section('content')
 
-	<h2> List of Users</h2>
+	<table border=0 width="100%">
+		<tr>
+			<td><h2>List of Users</h2></td>
+			<td align="right"><a href="users/create" class="btn btn-success" ><i class="fa fa-user-plus"></i> Add User</a></td>
+		</tr>
+	</table>
+	
+
 	<hr>
 
 	@if(Session::get('status'))
@@ -47,7 +54,7 @@
 
                     </td>
                     <td>
-                    	<a href="/admin/merchant/{{ $user->id  }}" class="btn btn-warning" data-toggle="tooltip" data-placement="top"  title="Edit Merchant Information"><i class="fa fa-pencil-square-o"></i></a>
+                    	<a href="/admin/merchant/{{ $user->id  }}" class="btn btn-warning" data-toggle="tooltip" data-placement="top"  title="Edit User Information"><i class="fa fa-pencil-square-o"></i></a>
                     	
                     	@if($user->status == 1)
                         	<button class="btn btn-default" type="button" data-toggle="modal" data-target="{{ '#deactivate_' . $user->id }}"  data-toggle="tooltip" data-placement="top"  title="Deactivate User"><i class="fa fa-ban"></i></button>
