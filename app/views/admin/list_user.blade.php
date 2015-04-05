@@ -20,6 +20,14 @@
       	{{ Session::forget('status') }}
     @endif
 
+    @if(Session::get('success_user_created'))
+        <div class="alert alert-success fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <center>{{ Session::get('success_user_created') }}</center>
+        </div>
+        {{ Session::forget('success_user_created') }}
+    @endif
+
 	<div class="table-responsive" >
         <table  id="tablesorter-table"  align="center" style="color:black" class="table table-striped display tablesorter sortable" id="main-table" border=0>
         <thead>
@@ -54,7 +62,7 @@
 
                     </td>
                     <td>
-                    	<a href="/admin/merchant/{{ $user->id  }}" class="btn btn-warning" data-toggle="tooltip" data-placement="top"  title="Edit User Information"><i class="fa fa-pencil-square-o"></i></a>
+                    	<a href="/admin/users/edit/{{ $user->id  }}" class="btn btn-warning" data-toggle="tooltip" data-placement="top"  title="Edit User Information"><i class="fa fa-pencil-square-o"></i></a>
                     	
                     	@if($user->status == 1)
                         	<button class="btn btn-default" type="button" data-toggle="modal" data-target="{{ '#deactivate_' . $user->id }}"  data-toggle="tooltip" data-placement="top"  title="Deactivate User"><i class="fa fa-ban"></i></button>

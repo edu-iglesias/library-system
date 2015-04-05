@@ -10,7 +10,7 @@ class UserSeeder extends Seeder
         $user->Fname = 'Sam';
         $user->Lname = 'Iglesias';
         $user->Mname = 'Camara';
-        $user->Mname = '09192845459';
+        $user->ContactNo = '09192845459';
         $user->status = '1';
         $user->save();
 
@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
         $user->Fname = 'Marth Deniece';
         $user->Lname = 'Geronimo';
         $user->Mname = 'Gee';
-        $user->Mname = '09152543679';
+        $user->ContactNo = '09152543679';
         $user->status = '1';
         $user->save();
 

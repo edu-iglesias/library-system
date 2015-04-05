@@ -25,6 +25,8 @@ Route::get('/admin/dashboard', 'AdminController@dashboard');
 
 Route::get('/admin/users/create', 'UserController@create');
 Route::post('/admin/users/create', 'UserController@store');
+Route::get('/admin/users/edit/{id}', 'UserController@edit');
+Route::post('/admin/users/edit/{id}', 'UserController@update');
 Route::get('/admin/users', 'UserController@index');
 Route::get('/admin/users/activate/{id}', 'UserController@activate');
 Route::get('/admin/users/deactivate/{id}', 'UserController@deactivate');
