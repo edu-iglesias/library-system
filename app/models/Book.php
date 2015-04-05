@@ -14,7 +14,12 @@ class Book extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var string
 	 */
+	
 	protected $table = 'books';
+
+	public $timestamps = false;
+
+	protected $primaryKey = 'bookID';
 
 	/**
 	 * The attributes excluded from the model's JSON form.

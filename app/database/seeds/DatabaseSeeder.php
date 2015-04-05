@@ -24,6 +24,9 @@ class DatabaseSeeder extends Seeder {
 		$this->call('UserSeeder');
 		$this->command->info('The User table has been seeded.');
 
+		$this->call('BookSeeder');
+		$this->command->info('The Book and Category table has been seeded.');
+
 		DB::statement('SET FOREIGN_KEY_CHECKS=1;'); // Return foreign key constraint
 	}
 

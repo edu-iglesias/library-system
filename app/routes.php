@@ -50,8 +50,10 @@ Route::get('/user', function()
 });
 
 
-
 Route::post('/userLogin', 'UserController@userlogin');
+
+Route::get('/user/books','BookController@listBooks');
+Route::post('/user/books','BookController@doBorrowBooks');
 
 
 //  - -- - - - -- - -END OF USER - - -- - -- //

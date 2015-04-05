@@ -67,4 +67,87 @@ class BookController extends BaseController {
 			return Redirect::back()->withInput()->withErrors($validationResult);
 		}
 	}
+
+	public function listBooks()
+	{
+		$books = DB::table('books')->paginate(10);
+		return View::make('user.list_of_books')->with('books',$books);
+	}
+
+	public function doBorrowBooks()
+	{
+		$inputs = Input::all();
+
+		$maxQuantity =  Input::get('maxQuantity');
+
+		$numberOfBooksBorrowed = DB::table('borrows')->where("user_id","=",Auth::id())->sum('quantity');
+		$numberOfBooksYouCanStillBorrow = 4 - $numberOfBooksBorrowed;
+		
+		// Check the limits of books you can still borrow
+		if($numberOfBooksBorrowed >= 4)
+		{
+			Session::put('borrowing_error', "You have reach the max limit of borrowed books (5).");
+			return Redirect::back();
+		}
+
+		// Change the max quantity to your numbers of books you can still borrow
+		if($numberOfBooksYouCanStillBorrow  < $maxQuantity)
+		{
+			$maxQuantity = $numberOfBooksYouCanStillBorrow;
+		}
+		
+		// Validate Book ID if it is a number
+
+		if ( is_numeric(Input::get('bookID')) ) 
+		{
+			$book = Book::where("bookID","=",Input::get('bookID'))->first();
+			$maxQuantity = $book->quantity;	// Get Available number of books
+
+			$rules = array(		
+				'bookID'    => "required|numeric",
+				'quantity'  =>"Required|min:1|max:$maxQuantity|numeric|digits:1",
+			);
+
+			// Check other validations like quantity must be a number
+			$validationResult = Validator::make($inputs, $rules);
+
+			if ( $validationResult->passes() ) 
+			{
+				$borrow = new Borrow;
+				$borrow->user_id = Auth::id();
+				$borrow->book_id = Input::get('bookID');
+				$borrow->quantity = Input::get('quantity');
+				$borrow->save();
+
+				// Compute the quantity left after borrow
+				$quantityLeft = $maxQuantity - Input::get('quantity');
+
+				//$updateBook = Book::where('bookID', '=', Input::get('bookID'))->first();
+
+				$book->quantity =  $quantityLeft;
+				$book->save();
+
+				Session::put('borrowing_success', "You have successfully borrowed the book.");
+				return Redirect::back();
+
+			}
+			else
+			{
+				Session::put('borrowing_error', $validationResult->messages()->first());
+				return Redirect::back();
+			}
+			
+		}
+		else
+		{
+			Session::put('borrowing_error', 'Book ID must be a number' );
+			return Redirect::back();
+		}
+
+
+
+
+
+
+	}
 }
