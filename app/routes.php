@@ -30,6 +30,8 @@ Route::get('/admin/users/activate/{id}', 'UserController@activate');
 Route::get('/admin/users/deactivate/{id}', 'UserController@deactivate');
 
 
+Route::get('/admin/books', 'BookController@index');
+
 
 // -- -- -- - -- -- -USER --- --- -- -- -//
 
@@ -43,6 +45,9 @@ Route::get('/user', function()
 	return View::make('user.login');
 });
 
+
+
+Route::post('/userLogin', 'UserController@userlogin');
 
 
 //  - -- - - - -- - -END OF USER - - -- - -- //

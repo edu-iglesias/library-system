@@ -43,7 +43,7 @@
                             <a href="/admin/users" style="border-bottom: solid 1px rgba(0, 0, 0, 0.2);">Manage User</a>
                         </li>
                         <li class="">
-                            <a href="/" style="border-bottom: solid 1px rgba(0, 0, 0, 0.2);">Manage Book</a>
+                            <a href="/admin/books" style="border-bottom: solid 1px rgba(0, 0, 0, 0.2);">Manage Book</a>
                         </li>
                     </ul>
 

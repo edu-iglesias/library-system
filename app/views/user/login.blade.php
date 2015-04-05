@@ -1,9 +1,9 @@
 @extends('user.layout.default')
 @section('header')
 <script>
-    function loginForm()
+    function loginForm1()
     {
-        var form = $('#loginForm');
+        var form = $('#loginForm1');
         document.getElementById('submitButton').style.display = 'none';
         document.getElementById('falseButton').style.display = '';
         $.ajax({
@@ -12,7 +12,7 @@
             data : form.serialize(),
             success : function(data){
                 if(data['status'] == 'SUCCESS')
-                    window.location ='../webDash';
+                    window.location ='../user/home';
                 else
                 {
                     $('#errorMsg').empty().append('Invalid login credentials.')
@@ -26,8 +26,8 @@
 
     $(document).keypress(function(e) {
         if(e.which == 13) {
-            if(document.getElementById('username').value.length != 0 || document.getElementById('password').value.length != 0)
-                loginForm();
+            if(document.getElementById('username1').value.length != 0 || document.getElementById('password1').value.length != 0)
+                loginForm1();
         }
     });
 
@@ -40,19 +40,19 @@
     <div class="col-md-4" style="background-color: #34495E; margin-top: 140px; padding: 10px;  border-radius: 10px;">
         <div class="col-md-1"></div>
         <div class="col-md-10" style="margin-top: 20px;">
-            <form id="loginForm" method="POST" action="/webLogin">
+            <form id="loginForm1" method="POST" action="/userLogin">
                 <!--<center><img src="images/skopic.png" style="width:250px; margin: 5px; margin-bottom: 40px;"></center> -->
                 <div class="input-group">
-                    <span class="input-group-addon" style="padding-right: 20px;
-                    padding-left: 30px;">Email</span>
-                    <input type="email" id="username" name="username" class="form-control" >
+                    <span class="input-group-addon" style="padding-right: 6px;
+                    padding-left: 15px;">Username</span>
+                    <input type="text" id="username1" name="username1" class="form-control" >
                 </div>
                 <div class="input-group" style="margin-top: 15px;">
                     <span class="input-group-addon" >Password</span>
-                    <input type="password" id="password" name="password" class="form-control" >
+                    <input type="password" id="password1" name="password1" class="form-control" >
                 </div>
             </form>
-            <button id="submitButton" name="submitButton" onclick="loginForm()" type="button" class="btn btn-primary" style="margin-top: 20px; margin-bottom: 30px;">
+            <button id="submitButton" name="submitButton" onclick="loginForm1()" type="button" class="btn btn-primary" style="margin-top: 20px; margin-bottom: 30px;">
                 Login
             </button>
              <button id="falseButton" class="btn btn-primary" disabled style="display: none; margin-top: 20px; margin-bottom: 30px;">Logging In... <span class="ion-refreshing"></span></button>

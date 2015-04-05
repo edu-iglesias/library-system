@@ -83,4 +83,24 @@ class UserController extends BaseController {
 		return Redirect::back();
 	}
 
+	public function userlogin()
+	{
+
+	$status = 'FAILED';
+
+	$user = new User();
+	$uname = Input::get('username1');
+	$pword = Input::get('password1');
+
+    if(Auth::attempt(array('UserId' => $uname, 'Password' => $pword)))
+    {
+    	$status = 'SUCCESS';
+    }
+            
+           	
+    return array('status' => $status);
+
+
+    }
+
 }
