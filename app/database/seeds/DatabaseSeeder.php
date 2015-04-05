@@ -9,11 +9,16 @@ class DatabaseSeeder extends Seeder {
 	 */
 	public function run()
 	{
+
+		DB::statement('SET FOREIGN_KEY_CHECKS=0;'); // Removes foreign key constraint
+
 		Eloquent::unguard();
 
 		// $this->call('UserTableSeeder');
 		$this->call('RoleSeeder');
 		$this->command->info('The Role table has been seeded.');
+
+		DB::statement('SET FOREIGN_KEY_CHECKS=1;'); // Return foreign key constraint
 	}
 
 }
