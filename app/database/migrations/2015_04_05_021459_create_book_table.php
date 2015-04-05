@@ -18,7 +18,7 @@ class CreateBookTable extends Migration {
 			$table->string('title', 50);
 			$table->integer('quantity');
 			$table->integer('category_categoryID');
-			$table->integer('author_authorID');
+			$table->string('author',70);
 		
 		});
 	}

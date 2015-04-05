@@ -31,6 +31,7 @@ Route::get('/admin/users/deactivate/{id}', 'UserController@deactivate');
 
 
 Route::get('/admin/books', 'BookController@index');
+Route::post('/admin/books/create', 'BookController@store');
 
 
 // -- -- -- - -- -- -USER --- --- -- -- -//

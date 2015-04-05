@@ -5,7 +5,7 @@
     <table border=0 width="100%">
         <tr>
             <td><h2>List of Books</h2></td>
-            <td align="right"><a href="users/create" class="btn btn-success" ><i class="fa fa-user-plus"></i> Add Book</a></td>
+            <td align="right"><a href="users/create" class="btn btn-success" ><i class="fa fa-book"></i> Add Book</a></td>
         </tr>
     </table>
     
@@ -33,13 +33,7 @@
                 <th>Action</th>
             </tr>
         </thead>
-       <?php 
-
-         $books = DB::table('books')->select(array('books.bookID as bookId', 'books.title as title', 'books.quantity as quantity', 'author.fName as fname', 'author.lname as lname'))->join('author', 'author.authorID','=','books.author_authorID')
-         
-         ->paginate(10);
-
-         ?>
+     
         <tbody>
 
             @if(count($books)==0)
@@ -55,7 +49,9 @@
                     
                     <td>{{ $b->quantity}}</td>
                     <td> {{ $b->fname .' '. $b->lname }} </td>
-                    <td></td>
+                    <td> <a href="#" class="btn btn-warning" data-toggle="tooltip" data-placement="top"  title="Edit User Information"><i class="fa fa-pencil-square-o"></i></a>
+                        <a href="#" class="btn btn-default" data-toggle="tooltip" data-placement="top"  title="Edit User Information"><i class="fa fa-trash"></i></a>
+                    </td>
                 </tr>     
 
             @endforeach
