@@ -18,6 +18,12 @@ class DatabaseSeeder extends Seeder {
 		$this->call('RoleSeeder');
 		$this->command->info('The Role table has been seeded.');
 
+		$this->call('AdminSeeder');
+		$this->command->info('The Admin has been seeded.');
+
+		$this->call('UserSeeder');
+		$this->command->info('The User table has been seeded.');
+
 		DB::statement('SET FOREIGN_KEY_CHECKS=1;'); // Return foreign key constraint
 	}
 

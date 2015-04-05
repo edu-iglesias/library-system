@@ -16,11 +16,11 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-Route::get('/admin', function()
-{
-	return View::make('admin.index');
-});
+Route::get('/admin', 'AdminController@index');
+Route::post('/admin', 'AdminController@login');
+Route::get('/admin/logout', 'AdminController@logout');
 
+Route::get('/admin/dashboard', 'AdminController@dashboard');
 
 
 Route::get('/admin/users/create', 'UserController@create');
@@ -32,6 +32,7 @@ Route::get('/admin/users/deactivate/{id}', 'UserController@deactivate');
 
 Route::get('/admin/books', 'BookController@index');
 Route::post('/admin/books/create', 'BookController@store');
+
 
 
 // -- -- -- - -- -- -USER --- --- -- -- -//

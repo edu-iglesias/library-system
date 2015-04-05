@@ -59,7 +59,7 @@
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a href="/logout"><i class="fa fa-power-off"></i> Log Out</a>
+                                    <a href="/admin/logout"><i class="fa fa-power-off"></i> Log Out</a>
                                 </li>
                             </ul>
                         </li>
