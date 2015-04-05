@@ -21,10 +21,7 @@ Route::get('/admin', function()
 	return View::make('admin.index');
 });
 
-Route::get('/user', function()
-{
-	return View::make('user.index');
-});
+
 
 Route::get('/admin/users/create', 'UserController@create');
 Route::post('/admin/users/create', 'UserController@store');
@@ -32,4 +29,21 @@ Route::get('/admin/users', 'UserController@index');
 Route::get('/admin/users/activate/{id}', 'UserController@activate');
 Route::get('/admin/users/deactivate/{id}', 'UserController@deactivate');
 
+
+
+// -- -- -- - -- -- -USER --- --- -- -- -//
+
+Route::get('/user/home', function()
+{
+	return View::make('user.index');
+});
+
+Route::get('/user', function()
+{
+	return View::make('user.login');
+});
+
+
+
+//  - -- - - - -- - -END OF USER - - -- - -- //
 
