@@ -71,7 +71,63 @@ class BookController extends BaseController {
 	public function listBooks()
 	{
 		$books = DB::table('books')->paginate(10);
+
 		return View::make('user.list_of_books')->with('books',$books);
+	}
+
+	public function edit($id)
+    {
+    
+
+    	$book = Book::find($id);
+    	
+
+    	Session::put('title', $book->title);
+		Session::put('quantity',$book->quantity);
+		Session::put('category_categoryID',$book->category_categoryID);
+		Session::put('author',$book->author);
+
+
+    	return View::make('admin.edit_book');
+    }
+
+    public function update($id)
+    {
+    	$inputs = Input::all();
+
+    	$book = Book::find($id);
+	    
+
+
+    	$rules = array(		
+			'title'    => 'Required|alpha_spaces|max:50',
+			'quantity'  =>'Required|numeric',
+        	'author'=>'Required|max:70',
+		);
+
+
+		$validationResult = Validator::make($inputs, $rules);
+
+		if ( $validationResult->passes() ) 
+		{
+
+
+			$book->title = Input::get('title');
+			$book->quantity = Input::get('quantity');
+			$book->category_categoryID = Input::get('selected');
+			$book->author = Input::get('author');
+			
+			$book->save();
+
+
+	        
+
+	        return Redirect::to('/admin/books');
+	    }
+	    else
+	    {
+	    	return Redirect::back()->withInput()->withErrors($validationResult);
+	    }
 	}
 
 	public function doBorrowBooks()
