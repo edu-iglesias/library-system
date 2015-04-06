@@ -36,9 +36,9 @@ class BookController extends BaseController {
 		$inputs = Input::all();
 
 		$rules = array(		
-			'title'    => 'Required|alpha_num|max:50',
-			'quantity'  =>'Required|numeric|max:1',
-        	'author'=>'Required|alpha_spaces|max:70',
+			'title'    => 'Required|alpha_spaces|max:50',
+			'quantity'  =>'Required|numeric',
+        	'author'=>'Required|max:70',
 			
 		);
 
@@ -46,22 +46,17 @@ class BookController extends BaseController {
 
 		if ( $validationResult->passes() ) 
 		{
-			$user = new User;
-			$user->UserId = Input::get('UserId');
-			$user->password = Hash::make(Input::get('password'));
-			$user->Fname = Input::get('FirstName');
-			$user->Lname = Input::get('LastName');
-			$user->Mname = Input::get('MiddleName');
-			$user->ContactNo = Input::get('ContactNo');
-			$user->status = 1;
-			$user->save();
+			$book = new Book;
+			$book->title = Input::get('title');
+			$book->quantity = Input::get('quantity');
+			$book->category_categoryID = Input::get('selected');
+			$book->author = Input::get('author');
+			
+			$book->save();
 
-			$assign = new Assigned;
-            $assign->user_id = $user->id;
-            $assign->role_id = Input::get('UserType');
-            $assign->save();
+			
 
-            Session::put('success_book_created', "You have successfully added a new user.");
+            Session::put('success_book_created', "You have successfully added a new book.");
             return Redirect::back();
 
 		}

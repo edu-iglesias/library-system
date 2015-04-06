@@ -5,12 +5,12 @@
 	<h2> Add Book(s)</h2>
 	<hr>
 
-	@if(Session::get('success_user_created'))
+	@if(Session::get('success_book_created'))
       	<div class="alert alert-success fade in" role="alert">
         	<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
         	<center>{{ Session::get('success_book_created') }}</center>
       	</div>
-      	{{ Session::forget('success_user_created') }}
+      	{{ Session::forget('success_book_created') }}
     @endif
 
 	<div class="form-create col-md-12">
@@ -28,7 +28,7 @@
 
 		<div class="forms col-md-12">
 			<div class="col-md-3 form-group @if ($errors->has('quantity')) has-error @endif">
-		       	{{ Form::text('quantity',Session::get('quantity'), array('class' => 'form-control', 'placeholder' => 'Quantity','maxlength'=>'1')) }}
+		       	{{ Form::text('quantity',Session::get('quantity'), array('class' => 'form-control', 'placeholder' => 'Quantity')) }}
 		        @if ($errors->has('quantity')) <i><p class="help-block" style="margin-left:5px">{{ $errors->first('quantity') }}</p></i> @endif
 		    </div>
 		</div>
@@ -36,12 +36,13 @@
 		<div class="forms col-md-12">
 			<?php $x = DB::table('category')->get(); ?>
 			<div class="col-md-3">
-				<select id="categ" name="categ" class="form-control" >
+				<select id="categ" name="categ" class="form-control" onchange="getcateg()">
                      @foreach($x as $xx)
                         <option value="{{ $xx->categoryID }}">{{ $xx->categoryName }}</option>
                     @endforeach
                 </select>
 		    </div>
+		    <input type="text" id="selected" name="selected" value="1"/>
 		</div>
 
 		<div class="forms col-md-12">
@@ -63,5 +64,20 @@
 		{{ Form::close(); }}
 
 	</div>
-	
+	<script >
+function getcateg()
+    {
+
+        var v = document.getElementById('categ').value;
+            
+            $('#selected').val(v);
+
+
+       
+
+    }
+
+
+
+</script>
 @stop
