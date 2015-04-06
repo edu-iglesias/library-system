@@ -102,6 +102,7 @@ class BookController extends BaseController {
     	$rules = array(		
 			'title'    => 'Required|alpha_spaces|max:50',
 			'quantity'  =>'Required|numeric',
+			
         	'author'=>'Required|max:70',
 		);
 
@@ -114,7 +115,7 @@ class BookController extends BaseController {
 
 			$book->title = Input::get('title');
 			$book->quantity = Input::get('quantity');
-			$book->category_categoryID = Input::get('selected');
+			$book->category_categoryID = Input::get('selected1');
 			$book->author = Input::get('author');
 			
 			$book->save();

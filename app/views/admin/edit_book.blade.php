@@ -37,14 +37,19 @@
 		
 			<?php $x = DB::table('category')->get(); ?>
 			
-			<div class="col-md-3">
-				<select id="categ1" name="categ1" class="form-control" onchange="getcateg1()">
-                     @foreach($x as $xx)
-                        <option value="{{  Session::get('category_categoryID') }}">{{ $xx->categoryName }}</option>
-                    @endforeach
-                </select>
-		    </div>
-		    <input type="text" id="selected1" name="selected1" value="1"/>
+			
+				<div class="col-md-3 form-group @if ($errors->has('category_categoryID')) has-error @endif">
+					<select id="categ1" name="categ1" class="form-control" onchange="getcateg1()">
+						
+	                     @foreach($x as $xx)
+
+	                        <option value="{{  $xx->categoryID }}">{{ $xx->categoryName }}</option>
+	                    @endforeach
+	                </select>
+	                @if ($errors->has('category_categoryID')) <i><p class="help-block" style="margin-left:5px">{{ $errors->first('category_categoryID') }}</p></i> @endif
+                </div>
+		    
+		    <input type="text" id="selected1" name="selected1" value="{{ Session::get('category_categoryID') }}"/>
 		</div>
 
 		<div class="forms col-md-12">
