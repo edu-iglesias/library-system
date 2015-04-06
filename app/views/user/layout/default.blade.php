@@ -38,7 +38,7 @@
         @yield('header')
     </head>
     <body style="margin: 10px;">
-       
+       @if(Auth::check())
                 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
                     <ul class="nav navbar-nav">
                         <!-- <li style="margin-right: -100px;"><img src="../images/banner.png" style="margin: 10px; width: 45%;"></li> -->
@@ -67,7 +67,7 @@
                     <a href="/user/logout" title="Logout" style="float: right;"><button class="btn btn-danger" style="margin: 10px;"><i class="fa fa-sign-out"></i></button></a>
                     @endif
                 </nav>
-
+            @endif
                 @yield('content')
 
                 <script type="text/javascript">  
