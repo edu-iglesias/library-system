@@ -20,16 +20,6 @@
 	      	{{ Session::forget('borrowing_success') }}
 	    @endif
 
-		<div>
-			<div class="input-group col-md-3">
-		      	<input type="text" class="form-control" placeholder="Search for...">
-		      	<span class="input-group-btn">
-		        	<button class="btn btn-default" type="button">Go!</button>
-		      </span>
-		    </div>
-		</div>
-
-		<hr>
 
         <div class="input-group col-md-12" >
 
@@ -58,7 +48,7 @@
 			                    <td>{{ $book->title }}</td>
 			                    <td>{{ $book->author }}</td>
 			                    <td>{{ $book->quantity }}</td>
-			                    <td> <button class="btn btn-primary" @if( $book->quantity  <= 0) disabled @endif type="button" data-toggle="modal" data-target="{{ '#book_' . $book->bookID }}"  data-toggle="tooltip" data-placement="top"  title="Deactivate User"><i class="fa fa-book"></i> Borrow </button> </td>
+			                    <td> <button class="btn btn-danger" @if( $book->quantity  <= 0) disabled @endif type="button" data-toggle="modal" data-target="{{ '#book_' . $book->bookID }}"  data-toggle="tooltip" data-placement="top"  title="Deactivate User"><i class="fa fa-reply"></i></i> Return </button> </td>
 			                </tr>     
 
 			            @endforeach
@@ -76,18 +66,18 @@
             	<div class="modal-content">
                 	<div class="modal-header">
                     	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    	<b style="color:black;">Borrow Book</b>
+                    	<b style="color:black;">Return Book</b>
                 	</div>
                 	<div class="modal-body">
                 		{{ Form::open() }}
-                    	<font color="black">How many copies would you like to borrow?</font> <br><br>
+                    	<font color="black">How many copies would you like to return?</font> <br><br>
                     	<input type="number" name="quantity" class="form-control" min=1 max="{{ $book->quantity }}"value=1 /> 
                 	</div>
                 	<div class="modal-footer">
                 		<div class="col-md-12">
                 				<input type="hidden" name="bookID" value="{{$book->bookID}}" />
                 				<input type="hidden" name="maxQuantity" value="{{$book->quantity}}" />
-                    			{{ Form::submit('Borrow', ['id'=>'submit','class' => 'btn btn-success']) }}
+                    			{{ Form::submit('Return', ['id'=>'submit','class' => 'btn btn-danger']) }}
 	                		{{ Form::close ()}}
 	                	</div>
 	                </div>

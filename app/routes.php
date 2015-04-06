@@ -13,7 +13,8 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	//return View::make('hello');
+	return Redirect::to('/user');
 });
 
 Route::get('/admin', 'AdminController@index');
@@ -57,6 +58,9 @@ Route::post('/userLogin', 'UserController@userlogin');
 
 Route::get('/user/books','BookController@listBooks');
 Route::post('/user/books','BookController@doBorrowBooks');
+
+Route::get('/user/books/borrowed','BookController@borrowedBooks');
+Route::post('/user/books/borrowed','BookController@returnBooks');
 
 
 //  - -- - - - -- - -END OF USER - - -- - -- //

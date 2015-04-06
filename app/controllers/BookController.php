@@ -143,7 +143,7 @@ class BookController extends BaseController {
 		// Check the limits of books you can still borrow
 		if($numberOfBooksBorrowed >= 4)
 		{
-			Session::put('borrowing_error', "You have reach the max limit of borrowed books (5).");
+			Session::put('borrowing_error', "You have reach the max limit of borrowed books (4).");
 			return Redirect::back();
 		}
 
@@ -200,11 +200,160 @@ class BookController extends BaseController {
 			Session::put('borrowing_error', 'Book ID must be a number' );
 			return Redirect::back();
 		}
-
-
-
-
-
-
 	}
+
+	public function borrowedBooks()
+	{
+		$books = DB::table('books')
+					 ->join('borrows', 'books.bookID', '=', 'borrows.book_id')
+					 ->where('borrows.user_id','=', Auth::id())
+
+		->paginate(10);
+
+		//return $books;
+
+		return View::make('user.list_of_books_borrowed')->with('books',$books);
+	}
+
+	public function returnBooks()
+	{
+		$inputs = Input::all();
+
+		if ( is_numeric(Input::get('bookID')) ) 
+		{
+			$book = Borrow::where("book_id","=",Input::get('bookID'))
+				->where("user_id","=",Auth::id())
+				->first();
+
+			$numberOfFetchedRows = count($book);
+
+			// Check if you really do have that book
+			if($numberOfFetchedRows == 0)
+			{
+				Session::put('borrowing_error', 'Unknown Book ID' );
+				return Redirect::back();
+			}
+
+			$maxQuantity = $book->quantity;
+
+			$rules = array(		
+				'bookID'    => "required|numeric",
+				'quantity'  =>"Required|min:1|max:$maxQuantity|numeric|digits:1",
+			);
+
+			$validationResult = Validator::make($inputs, $rules);
+			
+			if ( $validationResult->passes() ) 
+			{
+				// If you will return all
+				if($maxQuantity == Input::get('quantity'))
+				{
+					// Inserting to Archives
+					date_default_timezone_set("Asia/Manila");
+					$date_today = date('Y-m-d H:i:s');
+
+					$archive = new Archive;
+					$archive->book_id = Input::get('bookID');
+					$archive->user_id = Auth::id();
+					$archive->quantity = Input::get('quantity');
+					$archive->date_borrowed = $book->created_at;
+					$archive->date_returned = $date_today;
+					$archive->save();
+
+					//updating the list of books
+					$listOfBooks = Book::find(Input::get('bookID'));
+					$listOfBooks->quantity = $listOfBooks->quantity + Input::get('quantity');
+					$listOfBooks->save();
+
+					// Removing from the borred table
+					$book->delete();
+
+					Session::put('borrowing_success', "You have successfully returned all copies of the book.");
+		 			return Redirect::back();
+				}
+				else // If you will not return all
+				{
+					// Inserting to Archives
+					date_default_timezone_set("Asia/Manila");
+					$date_today = date('Y-m-d H:i:s');
+
+					$archive = new Archive;
+					$archive->book_id = Input::get('bookID');
+					$archive->user_id = Auth::id();
+					$archive->quantity = Input::get('quantity');
+					$archive->date_borrowed = $book->created_at;
+					$archive->date_returned = $date_today;
+					$archive->save();
+
+					//updating the list of books
+					$listOfBooks = Book::find(Input::get('bookID'));
+					$listOfBooks->quantity = $listOfBooks->quantity + Input::get('quantity');
+					$listOfBooks->save();
+
+					// Removing from the borred table
+					$book->quantity = $book->quantity - Input::get('quantity');
+					$book->save();
+
+					Session::put('borrowing_success', "You have successfully returned some copies of the book.");
+		 			return Redirect::back();
+
+				}
+			}
+			else
+			{
+				Session::put('borrowing_error', $validationResult->messages()->first());
+				return Redirect::back();
+			}
+
+		}
+		else
+		{
+			Session::put('borrowing_error', 'Book ID must be a number' );
+			return Redirect::back();
+		}
+
+		// 	$maxQuantity = $book->quantity;	// Get Available number of books
+
+		// 	$rules = array(		
+		// 		'bookID'    => "required|numeric",
+		// 		'quantity'  =>"Required|min:1|max:$maxQuantity|numeric|digits:1",
+		// 	);
+
+		// 	// Check other validations like quantity must be a number
+		// 	$validationResult = Validator::make($inputs, $rules);
+
+		// 	if ( $validationResult->passes() ) 
+		// 	{
+		// 		$borrow = new Borrow;
+		// 		$borrow->user_id = Auth::id();
+		// 		$borrow->book_id = Input::get('bookID');
+		// 		$borrow->quantity = Input::get('quantity');
+		// 		$borrow->save();
+
+		// 		// Compute the quantity left after borrow
+		// 		$quantityLeft = $maxQuantity - Input::get('quantity');
+
+		// 		//$updateBook = Book::where('bookID', '=', Input::get('bookID'))->first();
+
+		// 		$book->quantity =  $quantityLeft;
+		// 		$book->save();
+
+		// 		Session::put('borrowing_success', "You have successfully borrowed the book.");
+		// 		return Redirect::back();
+
+		// 	}
+		// 	else
+		// 	{
+		// 		Session::put('borrowing_error', $validationResult->messages()->first());
+		// 		return Redirect::back();
+		// 	}
+			
+		// }
+		// else
+		// {
+		// 	Session::put('borrowing_error', 'Book ID must be a number' );
+		// 	return Redirect::back();
+		// }
+	}
+
 }
