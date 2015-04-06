@@ -34,12 +34,26 @@
 </script>
 @stop
 
+
 @section('content')
+
+
+
 <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #7F8C8D">
     <div class="col-md-4"></div>
     <div class="col-md-4" style="background-color: #34495E; margin-top: 140px; padding: 10px;  border-radius: 10px;">
         <div class="col-md-1"></div>
         <div class="col-md-10" style="margin-top: 20px;">
+
+            @if(Session::get('logout_successful'))
+                <div class="alert alert-success fade in" role="alert">
+                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                    <center>{{ Session::get('logout_successful') }}</center>
+                </div>
+                {{ Session::forget('logout_successful') }}
+            @endif
+
+
             <form id="loginForm1" method="POST" action="/userLogin">
                 <!--<center><img src="images/skopic.png" style="width:250px; margin: 5px; margin-bottom: 40px;"></center> -->
                 <div class="input-group">

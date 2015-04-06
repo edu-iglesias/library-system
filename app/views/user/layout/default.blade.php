@@ -47,8 +47,10 @@
                         <li class="#active"><a href="#" class=""><i class="fa fa-user"></i> Profile</a></li>
                         <li><a href="/user/books"><i class="fa fa-th-list"></i></span> List of Books</a></li>
                         <li><a href="/user/books/borrowed"><i class="fa fa-book"></i> Borrowed Books</a></li>
-                        <li><a href="/user/books/archieves"><i class="fa fa-archive"></i> Archives</a></li>
-                        <!-- <li class="dropdown">
+                        <!-- <li><a href="/user/books/archieves"><i class="fa fa-archive"></i> Archives</a></li>
+                         -->
+
+                         <!-- <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="#">Action</a></li>
@@ -61,7 +63,9 @@
                             </ul>
                         </li> -->
                     </ul>
-                    <a href="#" title="Logout" style="float: right;"><button class="btn btn-danger" style="margin: 10px;"><i class="fa fa-sign-out"></i></button></a>
+                    @if(Route::getCurrentRoute()->getPath() != "user")
+                    <a href="/user/logout" title="Logout" style="float: right;"><button class="btn btn-danger" style="margin: 10px;"><i class="fa fa-sign-out"></i></button></a>
+                    @endif
                 </nav>
 
                 @yield('content')

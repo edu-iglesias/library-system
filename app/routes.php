@@ -55,6 +55,7 @@ Route::get('/user', function()
 
 
 Route::post('/userLogin', 'UserController@userlogin');
+Route::get('/user/logout', 'UserController@userlogout');
 
 Route::get('/user/books','BookController@listBooks');
 Route::post('/user/books','BookController@doBorrowBooks');
@@ -65,3 +66,10 @@ Route::post('/user/books/borrowed','BookController@returnBooks');
 
 //  - -- - - - -- - -END OF USER - - -- - -- //
 
+
+
+
+Route::get('/test', function()
+{
+ 	return Route::getCurrentRoute()->getPath();
+});

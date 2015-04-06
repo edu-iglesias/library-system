@@ -90,4 +90,6 @@ Route::filter('csrf', function()
 });
 
 
-Entrust::routeNeedsRole( 'admin/dashboard', array('Admin'), Redirect::to('/admin'));
+Entrust::routeNeedsRole( 'admin/*', array('Admin'), Redirect::to('/admin'));
+
+Entrust::routeNeedsRole( 'user/*', array('Student','Faculty'), Redirect::to('/user'), false );
