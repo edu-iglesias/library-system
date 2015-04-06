@@ -41,12 +41,16 @@
        
                 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
                     <ul class="nav navbar-nav">
-                        <li style="margin-right: -100px;"><img src="../images/banner.png" style="margin: 10px; width: 45%;"></li>
-                        <li class="#active"><a href="#" class=""><span class="ion-person" style="color: #27AE60; font-size: 20px; margin-right: 5px;"></span>Profile</a></li>
-                        <li><a href="/user/books"><span class="ion-clipboard" style="color: #C0392B; font-size: 20px; margin-right: 5px;"></span>List of Books</a></li>
-                        <li><a href="#"><span class="ion-star" style="color: #FFFF00; font-size: 20px; margin-right: 5px;"></span>Borrowed Books</a></li>
-                        <li><a href="#"><span class="ion-android-folder" style="color: #3366FF; font-size: 20px; margin-right: 5px;"></span>Archives</a></li>
-                        <!-- <li class="dropdown">
+                        <!-- <li style="margin-right: -100px;"><img src="../images/banner.png" style="margin: 10px; width: 45%;"></li> -->
+                        <li><a class="navbar-brand" href="#">Library System</a></li>
+                        
+                        <li class="#active"><a href="#" class=""><i class="fa fa-user"></i> Profile</a></li>
+                        <li><a href="/user/books"><i class="fa fa-th-list"></i></span> List of Books</a></li>
+                        <li><a href="/user/books/borrowed"><i class="fa fa-book"></i> Borrowed Books</a></li>
+                        <!-- <li><a href="/user/books/archieves"><i class="fa fa-archive"></i> Archives</a></li>
+                         -->
+
+                         <!-- <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="#">Action</a></li>
@@ -59,7 +63,9 @@
                             </ul>
                         </li> -->
                     </ul>
-                    <a href="#" title="Logout" style="float: right;"><button class="btn btn-danger" style="margin: 10px;"><span class="ion-power" style="margin-bottom: 3px; "></span></button></a>
+                    @if(Route::getCurrentRoute()->getPath() != "user")
+                    <a href="/user/logout" title="Logout" style="float: right;"><button class="btn btn-danger" style="margin: 10px;"><i class="fa fa-sign-out"></i></button></a>
+                    @endif
                 </nav>
 
                 @yield('content')

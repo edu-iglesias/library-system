@@ -200,4 +200,12 @@ class UserController extends BaseController {
 	    }
 	}
 
+	public function userlogout()
+	{
+		Auth::logout();
+		Session::flush();
+		Session::put('logout_successful', 'You have successfully logout.');
+		return Redirect::to('/user');
+	}
+
 }
