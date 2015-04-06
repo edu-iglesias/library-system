@@ -207,4 +207,16 @@ class BookController extends BaseController {
 
 
 	}
+
+	public function search() 
+	{
+
+	    $q = Input::get('search');
+	
+
+		return View::make('admin.list_search')->with('title',$n);
+
+
+
+	}
 }

@@ -37,6 +37,11 @@ Route::get('/admin/books/create', 'BookController@create');
 Route::post('/admin/books/create', 'BookController@store');
 Route::get('/admin/books/edit/{id}', 'BookController@edit');
 Route::post('/admin/books/edit/{id}', 'BookController@update');
+Route::get('/admin/books/search', 'BookController@search');
+Route::get('/user/home', function()
+{
+	return View::make('admin.list_search');
+});
 
 
 

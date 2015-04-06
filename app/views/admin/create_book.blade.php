@@ -42,7 +42,7 @@
                     @endforeach
                 </select>
 		    </div>
-		    <input type="text" id="selected" name="selected" value="1"/>
+		    <input type="hidden" id="selected" name="selected" value="1"/>
 		</div>
 
 		<div class="forms col-md-12">
