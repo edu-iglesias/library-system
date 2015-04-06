@@ -18,11 +18,16 @@ class BookController extends BaseController {
 	public function index()
 	{
 
-		$books = DB::table('books')->select(array('books.bookID as bookId', 'books.title as title', 'books.quantity as quantity', 'author.fName as fname', 'author.lname as lname'))->join('author', 'author.authorID','=','books.author_authorID')
+		$books = DB::table('books')->select(array('books.bookID as bookId', 'books.title as title', 'books.quantity as quantity', 'books.author as author'))
          
          ->paginate(10);
 
 		return View::make('admin.list_books')->with('books',$books);
+	}
+
+	public function create()
+	{
+		return View::make('admin.create_book');
 	}
 
 
@@ -32,7 +37,7 @@ class BookController extends BaseController {
 
 		$rules = array(		
 			'title'    => 'Required|alpha_num|max:50',
-			'quantity'  =>'Required|min:1|numeric|digits:1',
+			'quantity'  =>'Required|numeric|max:1',
         	'author'=>'Required|alpha_spaces|max:70',
 			
 		);
@@ -56,7 +61,7 @@ class BookController extends BaseController {
             $assign->role_id = Input::get('UserType');
             $assign->save();
 
-            Session::put('success_user_created', "You have successfully added a new user.");
+            Session::put('success_book_created', "You have successfully added a new user.");
             return Redirect::back();
 
 		}

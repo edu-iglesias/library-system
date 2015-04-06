@@ -5,7 +5,7 @@
     <table border=0 width="100%">
         <tr>
             <td><h2>List of Books</h2></td>
-            <td align="right"><a href="users/create" class="btn btn-success" ><i class="fa fa-book"></i> Add Book</a></td>
+            <td align="right"><a href="/admin/books/create" class="btn btn-success" ><i class="fa fa-book"></i> Add Book</a></td>
         </tr>
     </table>
     
@@ -48,7 +48,7 @@
                     <td>{{ $b->title }}</td>
                     
                     <td>{{ $b->quantity}}</td>
-                    <td> {{ $b->fname .' '. $b->lname }} </td>
+                    <td> {{ $b->author }} </td>
                     <td> <a href="#" class="btn btn-warning" data-toggle="tooltip" data-placement="top"  title="Edit User Information"><i class="fa fa-pencil-square-o"></i></a>
                         <a href="#" class="btn btn-default" data-toggle="tooltip" data-placement="top"  title="Edit User Information"><i class="fa fa-trash"></i></a>
                     </td>
