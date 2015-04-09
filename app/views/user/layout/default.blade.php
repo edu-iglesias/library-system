@@ -38,6 +38,7 @@
         @yield('header')
     </head>
     <body style="margin: 10px;">
+
        @if(Auth::user())
                 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
                     <ul class="nav navbar-nav">
@@ -68,6 +69,7 @@
                     @endif
                 </nav>
                 @endif
+
                 @yield('content')
 
                 <script type="text/javascript">  
