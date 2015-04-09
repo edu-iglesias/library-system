@@ -13,7 +13,7 @@ class AdminController extends BaseController {
         	'UserId'     => Input::get('userId'),
         	'password'  => Input::get('password')
     	);
-
+        $user1 = Input::get('userId');
     	// authenticate userId and password through user table
     	if (Auth::attempt($userdata)) 
     	{
@@ -26,10 +26,14 @@ class AdminController extends BaseController {
 				return  Redirect::back();
 			}
 
+<<<<<<< Updated upstream
             $user = User::find(Auth::id());
             Session::put('admin_firstname',$user->Fname);
             Session::put('admin_lastname',$user->Lname);
 			return Redirect::to('/admin/dashboard');
+=======
+			return Redirect::to('/admin/dashboard')->with('userid',$user1);
+>>>>>>> Stashed changes
     	}
     	else
     	{

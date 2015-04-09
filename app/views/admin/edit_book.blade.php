@@ -49,7 +49,7 @@
 	                @if ($errors->has('category_categoryID')) <i><p class="help-block" style="margin-left:5px">{{ $errors->first('category_categoryID') }}</p></i> @endif
                 </div>
 		    
-		    <input type="text" id="selected1" name="selected1" value="{{ Session::get('category_categoryID') }}"/>
+		    <input type="hidden" id="selected1" name="selected1" value="{{ Session::get('category_categoryID') }}"/>
 		</div>
 
 		<div class="forms col-md-12">
