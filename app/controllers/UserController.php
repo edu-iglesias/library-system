@@ -7,6 +7,7 @@ class UserController extends BaseController {
 		$users = DB::table('users') 
 		 ->join('assigned_roles', 'users.id', '=', 'assigned_roles.user_id')
 		 ->join('roles', 'assigned_roles.role_id', '=', 'roles.id')
+		 ->where('status','!=','9')
 		 ->select('*', 'users.id')
 		 ->paginate(10);
 

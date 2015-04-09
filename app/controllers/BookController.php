@@ -310,48 +310,6 @@ class BookController extends BaseController {
 			return Redirect::back();
 		}
 
-		// 	$maxQuantity = $book->quantity;	// Get Available number of books
-
-		// 	$rules = array(		
-		// 		'bookID'    => "required|numeric",
-		// 		'quantity'  =>"Required|min:1|max:$maxQuantity|numeric|digits:1",
-		// 	);
-
-		// 	// Check other validations like quantity must be a number
-		// 	$validationResult = Validator::make($inputs, $rules);
-
-		// 	if ( $validationResult->passes() ) 
-		// 	{
-		// 		$borrow = new Borrow;
-		// 		$borrow->user_id = Auth::id();
-		// 		$borrow->book_id = Input::get('bookID');
-		// 		$borrow->quantity = Input::get('quantity');
-		// 		$borrow->save();
-
-		// 		// Compute the quantity left after borrow
-		// 		$quantityLeft = $maxQuantity - Input::get('quantity');
-
-		// 		//$updateBook = Book::where('bookID', '=', Input::get('bookID'))->first();
-
-		// 		$book->quantity =  $quantityLeft;
-		// 		$book->save();
-
-		// 		Session::put('borrowing_success', "You have successfully borrowed the book.");
-		// 		return Redirect::back();
-
-		// 	}
-		// 	else
-		// 	{
-		// 		Session::put('borrowing_error', $validationResult->messages()->first());
-		// 		return Redirect::back();
-		// 	}
-			
-		// }
-		// else
-		// {
-		// 	Session::put('borrowing_error', 'Book ID must be a number' );
-		// 	return Redirect::back();
-		// }
 	}
 
 	public function search() 
@@ -360,4 +318,87 @@ class BookController extends BaseController {
 	    $q = Input::get('search');
 		return View::make('admin.list_search')->with('title',$n);
 	}
+
+	public function category()
+	{
+		$categories = DB::table('category')->get();
+		return View::make('admin.list_of_category')->with('categories',$categories);
+	}
+
+	public function categoryCreate()
+	{
+		return View::make('admin.create_category');
+	}
+
+	public function categoryStore()
+	{
+		$inputs = Input::all();
+
+		$rules = array(		
+			'categoryName'    => 'Required|max:30|unique:category,categoryName',
+		);
+
+		$validationResult = Validator::make($inputs, $rules);
+
+		if ( $validationResult->passes() ) 
+		{
+			$category = new Category;
+			$category->categoryName = Input::get('categoryName');
+        	$category->save();
+
+            Session::put('success_category_created', "You have successfully added a new category.");
+            return Redirect::back();
+		}
+		else
+		{
+			return Redirect::back()->withInput()->withErrors($validationResult);
+		}
+	}
+
+	public function categoryEdit($id)
+	{
+		$categories = Category::find($id);
+
+		Session::put('categoryName', $categories->categoryName);
+		return View::make('admin.edit_category');
+	}
+
+	public function categoryUpdate($id)
+	{
+		$inputs = Input::all();
+
+		$category = Category::find($id);
+
+		$nameRule = " ";
+
+		if($category->categoryName != Input::get('categoryName'))
+		{
+			$nameRule = 'required|max:30|unique:category,categoryName';
+		}
+
+
+		$rules = array(		
+			'categoryName'    => $nameRule,
+		);
+
+		$validationResult = Validator::make($inputs, $rules);
+
+		if ( $validationResult->passes() ) 
+		{
+			$category->categoryName = Input::get('categoryName');
+        	$category->save();
+
+            Session::put('success_category_updated', "You have successfully updated the category.");
+            return Redirect::to('/admin/books/category');
+		}
+		else
+		{
+			return Redirect::back()->withInput()->withErrors($validationResult);
+		}
+		
+
+
+	}
+
+
 }

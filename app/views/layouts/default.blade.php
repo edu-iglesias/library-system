@@ -253,6 +253,9 @@
                             <a href="/admin/books" style="border-bottom: solid 1px rgba(0, 0, 0, 0.2);"><i class="fa fa-book"></i> Manage Books</a>
                         </li>
                         <li class="">
+                            <a href="/admin/books/category" style="border-bottom: solid 1px rgba(0, 0, 0, 0.2);"><i class="fa fa-tags"></i> Manage Categories</a>
+                        </li>
+                        <li class="">
                             <a href="/admin/books/borrowed" style="border-bottom: solid 1px rgba(0, 0, 0, 0.2);"><i class="fa fa-table"></i> Borrowed Books</a>
                         </li>
                         <li class="">
@@ -269,9 +272,9 @@
 
 
                             <ul class="dropdown-menu">
-                                <li>
+<!--                                 <li>
                                     <a href="#t"><i class="fa fa-user-secret"></i> Edit Profile</a>
-                                </li>
+                                </li> -->
                                 <li>
                                     <a href="/admin/logout"><i class="fa fa-sign-out"></i></i> Log Out</a>
                                 </li>

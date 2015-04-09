@@ -6,8 +6,7 @@
         <tr>
             <td><h2><i class="fa fa-book"></i> List of Books</h2></td>
             <td align="right">
-                <a href="/admin/books/category" class="btn btn-success" ><i class="fa fa-book"></i> Add Category</a>
-                <a href="/admin/books/create" class="btn btn-success" ><i class="fa fa-book"></i> Add Book</a>
+                <a href="/admin/books/create" class="btn btn-success" ><i class="fa fa-book"></i></i> Add Book</a>
             </td>
         </tr>
     </table>
@@ -29,6 +28,8 @@
             <tr>
                 <th>Book ID</th>
                 <th>Title</th>
+                <th>In</th>
+                <th>Out</th>
                 <th>Quantity</th>
                 <th>Author</th>
                 <th>Action</th>
@@ -48,7 +49,19 @@
                     
                     <td>{{ $b->title }}</td>
                   
-                    <td>{{ $b->quantity}}</td>
+                    <td>{{ $b->quantity }}</td>
+                    <td>
+                    <?php
+                        $borrowedBooks =  Borrow::where('book_id','=',$b->bookId)->get();
+                        $total = 0;
+                        foreach ($borrowedBooks as $borrowedBook) 
+                        {
+                            $total = $total + $borrowedBook->quantity;
+                        }
+                        echo $total;
+                    ?>
+                    </td>
+                    <td>{{ $total + $b->quantity }}</td>
 
                     <td> {{ $b->author }} </td>
                     <td> 
