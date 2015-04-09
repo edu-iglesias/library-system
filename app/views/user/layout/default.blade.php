@@ -59,7 +59,7 @@
                 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
                     <ul class="nav navbar-nav">
                         <!-- <li style="margin-right: -100px;"><img src="../images/banner.png" style="margin: 10px; width: 45%;"></li> -->
-                        <li><a class="navbar-brand" href="/" style="color:#008cba;">{{ HTML::image('images/logo2.png',"",['height'=>'25px', 'width'=>'25px']) }} WSA Library System</font></a></li>
+                        <li><a class="navbar-brand" href="/user/home" style="color:#008cba;">{{ HTML::image('images/logo2.png',"",['height'=>'25px', 'width'=>'25px']) }} WSA Library System</font></a></li>
                         
                         <!-- <li class="#active"><a href="#" class=""><i class="fa fa-user"></i> Profile</a></li>
                          --><li><a href="/user/books"><i class="fa fa-th-list"></i></span> List of Books</a></li>
