@@ -272,9 +272,9 @@
 
 
                             <ul class="dropdown-menu">
-                                <li>
+<!--                                 <li>
                                     <a href="#t"><i class="fa fa-user-secret"></i> Edit Profile</a>
-                                </li>
+                                </li> -->
                                 <li>
                                     <a href="/admin/logout"><i class="fa fa-sign-out"></i></i> Log Out</a>
                                 </li>

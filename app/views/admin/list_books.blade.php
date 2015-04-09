@@ -6,7 +6,6 @@
         <tr>
             <td><h2><i class="fa fa-book"></i> List of Books</h2></td>
             <td align="right">
-                <a href="/admin/books/category" class="btn btn-success" ><i class="fa fa-tags"></i> Add Category</a>
                 <a href="/admin/books/create" class="btn btn-success" ><i class="fa fa-book"></i></i> Add Book</a>
             </td>
         </tr>
