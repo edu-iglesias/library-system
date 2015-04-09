@@ -57,10 +57,5 @@
             @endforeach
         </tbody>
     </table>
-
-    <center>{{ $books->links(); }}</center>
-
-    
-
-    
+ 
 @stop

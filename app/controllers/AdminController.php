@@ -64,5 +64,10 @@ class AdminController extends BaseController {
         return View::make('admin.admin_archives')->with('archives', $archives);
     }
 
+    public function booksBorrowed()
+    {
+        
+    }
+
 
 }
