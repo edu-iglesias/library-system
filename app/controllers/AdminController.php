@@ -13,7 +13,8 @@ class AdminController extends BaseController {
         	'UserId'     => Input::get('userId'),
         	'password'  => Input::get('password')
     	);
-        $user1 = Input::get('userId');
+
+
     	// authenticate userId and password through user table
     	if (Auth::attempt($userdata)) 
     	{
@@ -26,14 +27,12 @@ class AdminController extends BaseController {
 				return  Redirect::back();
 			}
 
-<<<<<<< Updated upstream
+
             $user = User::find(Auth::id());
             Session::put('admin_firstname',$user->Fname);
             Session::put('admin_lastname',$user->Lname);
 			return Redirect::to('/admin/dashboard');
-=======
-			return Redirect::to('/admin/dashboard')->with('userid',$user1);
->>>>>>> Stashed changes
+
     	}
     	else
     	{
@@ -52,7 +51,17 @@ class AdminController extends BaseController {
 
     public function dashboard()
     {
-    	return View::make('admin.dashboard');
+        $user = User::find(Auth::id())->get();
+    	return View::make('admin.dashboard')->with('user',$user);
+    }
+
+    public function adminArchives()
+    {
+        $archives = DB::table('archives')
+            ->join('books', 'archives.book_id', '=', 'books.bookID')
+            ->get();
+
+        return View::make('admin.admin_archives')->with('archives', $archives);
     }
 
 

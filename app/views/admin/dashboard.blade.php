@@ -2,14 +2,10 @@
 
 @section('content')
 
-	
-
 	<div class="form-create col-md-12">
-	
-		       <h3> Account</h3>
-				<hr>	
+		<h3> Account</h3>
+		<hr>	
 
-	<?php $user = User::where('UserId',$user1); ?>
 		{{ Form::open() }}
 	@foreach($user as $u)
 		<div class="forms col-md-12">
