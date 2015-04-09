@@ -33,7 +33,7 @@ class AdminController extends BaseController {
             Session::put('admin_lastname',$user->Lname);
             Session::put('admin_id',$user->id);
             
-			return View::make('/admin/dashboard')->with('userid',$user->id);
+			return Redirect::to('/admin/dashboard');
 
     	}
     	else
@@ -52,7 +52,11 @@ class AdminController extends BaseController {
 		return Redirect::to('/admin');
 	}
 
-
+    public function dashboard()
+    {
+        
+        return View::make('/admin/dashboard');
+    }
 
     public function adminArchives()
     {
@@ -129,7 +133,7 @@ class AdminController extends BaseController {
            
             Session::put('success_user_created', 'You have successfully edited your password.');
 
-            return Redirect::to('/admin/users');
+            return Redirect::to('/admin/dashboard');
         }
         else
         {

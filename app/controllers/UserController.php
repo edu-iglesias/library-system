@@ -217,4 +217,69 @@ class UserController extends BaseController {
 		return View::make('user.user_archives')->with('archives', $archives);
 	}
 
+	public function editpass($id)
+    {
+        $user = User::find($id);
+        
+        
+        return View::make('user.edit_pass')->with('user',$user);
+    }
+
+    public function changepass($id)
+    {
+       $inputs = Input::all();
+
+        $user = User::find($id);
+
+        $userpass=$user->password;
+
+        $newpass = $inputs['newpass'];
+        
+        if(!Hash::check($inputs['oldpass'], Auth::user()->password))
+        {
+            $oldpass = 'Required|min:5|max:20|Confirmed';
+        }
+        else
+        {
+            $oldpass = '';
+        }
+
+        if($inputs['confirmpass'] != $inputs['newpass'])
+        {
+            $conf = 'Required|min:5|max:20|Confirmed';
+        }
+        else
+        {
+            $conf = '';
+        }
+       
+
+        $rules = array(     
+            'oldpass'  => $oldpass,
+            'newpass'  => 'Required|min:5|max:20',
+            'confirmpass'  => $conf,
+             
+        );
+
+
+        $validationResult = Validator::make($inputs, $rules);
+
+        if ( $validationResult->passes() ) 
+        {
+
+            $user->password = Hash::make(Input::get('newpass'));
+
+            $user->save();
+
+           
+            Session::put('success_user_created', 'You have successfully edited your password.');
+
+            return Redirect::to('/user/home');
+        }
+        else
+        {
+            return Redirect::back()->withInput()->withErrors($validationResult);
+        }
+    }
+
 }

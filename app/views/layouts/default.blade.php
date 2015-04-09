@@ -243,8 +243,8 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <!-- Side Menu -->
                     <ul class="nav navbar-nav side-nav">
-                        <li class="active">
-                            <a href="/admin" style="border-bottom: solid 1px rgba(0, 0, 0, 0.2);"><i class="fa fa-tachometer"></i> Dashboard</a>
+                        <li class="">
+                            <a href="/admin/dashboard" style="border-bottom: solid 1px rgba(0, 0, 0, 0.2);"><i class="fa fa-tachometer"></i> Dashboard</a>
                         </li>
                         <li class="">
                             <a href="/admin/users" style="border-bottom: solid 1px rgba(0, 0, 0, 0.2);"> <i class="fa fa-user"></i> Manage Users </a>
