@@ -29,7 +29,7 @@ class UserController extends BaseController {
 			'FirstName'     => 'Required|alpha_spaces|max:50',
 			'LastName'     => 'Required|alpha_spaces|max:50',
 			'MiddleName'     => 'Required|alpha_spaces|max:50',
-			'ContactNo' => 'Required',
+			'ContactNo' => 'max:10',
 			'UserType'  => 'Required|in:2,3,',
 		);
 

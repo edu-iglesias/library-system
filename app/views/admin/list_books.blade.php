@@ -5,7 +5,10 @@
     <table border=0 width="100%">
         <tr>
             <td><h2><i class="fa fa-book"></i> List of Books</h2></td>
-            <td align="right"><a href="/admin/books/create" class="btn btn-success" ><i class="fa fa-book"></i> Add Book</a></td>
+            <td align="right">
+                <a href="/admin/books/category" class="btn btn-success" ><i class="fa fa-book"></i> Add Category</a>
+                <a href="/admin/books/create" class="btn btn-success" ><i class="fa fa-book"></i> Add Book</a>
+            </td>
         </tr>
     </table>
     

@@ -24,7 +24,7 @@ class AdminController extends BaseController {
 			{
 				Auth::logout();
 				Session::put('login_failure','Authentication Failed. Please try again.');
-				return  Redirect::back();
+				return  Redirect::back()->withInput();
 			}
 
 
@@ -37,7 +37,7 @@ class AdminController extends BaseController {
     	else
     	{
     		Session::put('login_failure','Authentication Failed. Please try again.');
-    		return  Redirect::back();
+    		return  Redirect::back()->withInput();
     	}
     }
 
@@ -66,7 +66,11 @@ class AdminController extends BaseController {
 
     public function booksBorrowed()
     {
-        
+        $books = DB::table('books')
+            ->join('borrows', 'books.bookID', '=', 'borrows.book_id')
+            ->get();
+
+        return View::make('admin.list_borrowed_books')->with('books', $books);
     }
 
 

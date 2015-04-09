@@ -2,6 +2,8 @@
 
 @section('content')
 
+<a class="fancybox-effects-a" href="5_b.jpg" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit">{{ HTML::image('images/a.jpg') }}</a>
+
     <table border=0 width="100%">
         <tr>
             <td><h2><i class="fa fa-archive"></i> Archives</h2></td>

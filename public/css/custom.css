@@ -21,3 +21,7 @@ body {
 	margin-top:1% !important;
 }
 
+table{
+    table-layout: fixed;
+    word-break:break-word;
+}
