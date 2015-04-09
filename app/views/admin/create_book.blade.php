@@ -21,14 +21,14 @@
 
 		<div class="forms col-md-12">
 			<div class="col-md-3 form-group @if ($errors->has('title')) has-error @endif">
-		       	{{ Form::text('title',Session::get('title'), array('class' => 'form-control', 'placeholder' => 'Book Title','maxlength'=>'50')) }}
+		       	{{ Form::text('title', '',array('class' => 'form-control', 'placeholder' => 'Book Title','maxlength'=>'50')) }}
 		        @if ($errors->has('title')) <i><p class="help-block" style="margin-left:5px">{{ $errors->first('title') }}</p></i> @endif
 		    </div>
 		</div>
 
 		<div class="forms col-md-12">
 			<div class="col-md-3 form-group @if ($errors->has('quantity')) has-error @endif">
-		       	{{ Form::text('quantity',Session::get('quantity'), array('class' => 'form-control', 'placeholder' => 'Quantity')) }}
+		       	{{ Form::text('quantity','', array('class' => 'form-control', 'placeholder' => 'Quantity')) }}
 		        @if ($errors->has('quantity')) <i><p class="help-block" style="margin-left:5px">{{ $errors->first('quantity') }}</p></i> @endif
 		    </div>
 		</div>
@@ -48,7 +48,7 @@
 		<div class="forms col-md-12">
 			<p></p>
 			<div class="col-md-6 form-group @if ($errors->has('author')) has-error @endif">
-		        {{ Form::text('author',Session::get('author'), array('class' => 'form-control', 'placeholder' => 'Author(s)','maxlength'=>'70')) }}
+		        {{ Form::text('author','', array('class' => 'form-control', 'placeholder' => 'Author(s)','maxlength'=>'70')) }}
 		        @if ($errors->has('author')) <i><p class="help-block" style="margin-left:5px">{{ $errors->first('author') }}</p></i> @endif
 		    </div>
 		</div>
