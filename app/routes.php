@@ -48,15 +48,13 @@ Route::get('/admin/books/borrowed','AdminController@booksBorrowed');
 
 Route::get('/admin/archives','AdminController@adminArchives');
 
+Route::get('/user/changepass/{id}', 'UserController@editpass');
+Route::post('/user/changepass/{id}', 'UserController@changepass');
 
 
 
 
 
-Route::get('/user/home', function()
-{
-	return View::make('admin.list_search');
-});
 
 
 
@@ -64,8 +62,9 @@ Route::get('/user/home', function()
 
 Route::get('/user/home', function()
 {
+	$user = User::find(Auth::id())->get();
 	
-	return View::make('user.index');
+	return View::make('user.index')->with('user',$user);
 });
 
 Route::get('/user', function()

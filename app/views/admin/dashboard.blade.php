@@ -4,7 +4,7 @@
 
 	<div class="form-create col-md-12">
 	
-	<?php $user = DB::table('users')->where('id',$userid)->get(); ?>
+	<?php $user = DB::table('users')->where('id',Auth::id())->get(); ?>
 	
 		<div class="forms col-md-12">
 			<div class="col-md-6 form-group">

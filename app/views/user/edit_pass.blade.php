@@ -1,5 +1,4 @@
-@extends('layouts.default')
-
+@extends('user.layout.default')
 @section('content')
 
 	<div class="form-create col-md-12">
@@ -9,7 +8,6 @@
 			<h3>Password</h3>
 			<hr>
 			
-			 
 			
 			<div class="forms col-md-12">
 			<div class="col-md-3 form-group @if ($errors->has('oldpass')) has-error @endif">
