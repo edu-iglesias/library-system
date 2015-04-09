@@ -31,7 +31,9 @@ class AdminController extends BaseController {
             $user = User::find(Auth::id());
             Session::put('admin_firstname',$user->Fname);
             Session::put('admin_lastname',$user->Lname);
-			return Redirect::to('/admin/dashboard');
+            Session::put('admin_id',$user->id);
+            
+			return View::make('/admin/dashboard')->with('userid',$user->id);
 
     	}
     	else
@@ -40,6 +42,7 @@ class AdminController extends BaseController {
     		return  Redirect::back();
     	}
     }
+  
 
     public function logout()
 	{
@@ -49,11 +52,7 @@ class AdminController extends BaseController {
 		return Redirect::to('/admin');
 	}
 
-    public function dashboard()
-    {
-        $user = User::find(Auth::id())->get();
-    	return View::make('admin.dashboard')->with('user',$user);
-    }
+
 
     public function adminArchives()
     {
@@ -67,6 +66,71 @@ class AdminController extends BaseController {
     public function booksBorrowed()
     {
         
+    }
+
+    public function editpass($id)
+    {
+        $user = User::find($id);
+        
+        
+        return View::make('admin.edit_pass')->with('user',$user);
+    }
+
+    public function changepass($id)
+    {
+       $inputs = Input::all();
+
+        $user = User::find($id);
+
+        $userpass=$user->password;
+
+        $newpass = $inputs['newpass'];
+        
+        if(!Hash::check($inputs['oldpass'], Auth::user()->password))
+        {
+            $oldpass = 'Required|min:5|max:20|Confirmed';
+        }
+        else
+        {
+            $oldpass = '';
+        }
+
+        if($inputs['confirmpass'] != $inputs['newpass'])
+        {
+            $conf = 'Required|min:5|max:20|Confirmed';
+        }
+        else
+        {
+            $conf = '';
+        }
+       
+
+        $rules = array(     
+            'oldpass'  => $oldpass,
+            'newpass'  => 'Required|min:5|max:20',
+            'confirmpass'  => $conf,
+             
+        );
+
+
+        $validationResult = Validator::make($inputs, $rules);
+
+        if ( $validationResult->passes() ) 
+        {
+
+            $user->password = Hash::make(Input::get('newpass'));
+
+            $user->save();
+
+           
+            Session::put('success_user_created', 'You have successfully edited your password.');
+
+            return Redirect::to('/admin/users');
+        }
+        else
+        {
+            return Redirect::back()->withInput()->withErrors($validationResult);
+        }
     }
 
 

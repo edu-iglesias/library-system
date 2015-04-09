@@ -24,6 +24,10 @@ Route::get('/admin/logout', 'AdminController@logout');
 Route::get('/admin/dashboard', 'AdminController@dashboard');
 
 
+Route::get('/admin/changepass/{id}', 'AdminController@editpass');
+Route::post('/admin/changepass/{id}', 'AdminController@changepass');
+
+
 Route::get('/admin/users/create', 'UserController@create');
 Route::post('/admin/users/create', 'UserController@store');
 Route::get('/admin/users/edit/{id}', 'UserController@edit');
@@ -47,6 +51,8 @@ Route::get('/admin/archives','AdminController@adminArchives');
 
 
 
+
+
 Route::get('/user/home', function()
 {
 	return View::make('admin.list_search');
@@ -58,6 +64,7 @@ Route::get('/user/home', function()
 
 Route::get('/user/home', function()
 {
+	
 	return View::make('user.index');
 });
 

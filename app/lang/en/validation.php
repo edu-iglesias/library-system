@@ -73,7 +73,7 @@ return array(
 	"url"                  => "The :attribute format is invalid.",
 	"timezone"             => "The :attribute must be a valid zone.",
 	"alpha_spaces"             => "The :attribute contains invalid characters.",
-
+	"oldpass"               => "The old pass did not match.",
 	/*
 	|--------------------------------------------------------------------------
 	| Custom Validation Language Lines
