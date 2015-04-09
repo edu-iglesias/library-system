@@ -6,4 +6,6 @@ class Category extends Eloquent{
 	 
 	protected $table = 'category';
 
+	protected $primaryKey = 'categoryID';
+
 }

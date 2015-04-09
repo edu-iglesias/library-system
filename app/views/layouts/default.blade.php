@@ -253,6 +253,9 @@
                             <a href="/admin/books" style="border-bottom: solid 1px rgba(0, 0, 0, 0.2);"><i class="fa fa-book"></i> Manage Books</a>
                         </li>
                         <li class="">
+                            <a href="/admin/books/category" style="border-bottom: solid 1px rgba(0, 0, 0, 0.2);"><i class="fa fa-tags"></i> Manage Categories</a>
+                        </li>
+                        <li class="">
                             <a href="/admin/books/borrowed" style="border-bottom: solid 1px rgba(0, 0, 0, 0.2);"><i class="fa fa-table"></i> Borrowed Books</a>
                         </li>
                         <li class="">

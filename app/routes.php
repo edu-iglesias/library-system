@@ -44,6 +44,12 @@ Route::get('/admin/books/edit/{id}', 'BookController@edit');
 Route::post('/admin/books/edit/{id}', 'BookController@update');
 Route::get('/admin/books/search', 'BookController@search');
 
+Route::get('/admin/books/category', 'BookController@category');
+Route::get('/admin/books/category/create', 'BookController@categoryCreate');
+Route::post('/admin/books/category/create', 'BookController@categoryStore');
+Route::get('/admin/books/category/edit/{id}', 'BookController@categoryEdit');
+Route::post('/admin/books/category/edit/{id}', 'BookController@categoryUpdate');
+
 Route::get('/admin/books/borrowed','AdminController@booksBorrowed');
 
 Route::get('/admin/archives','AdminController@adminArchives');

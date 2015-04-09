@@ -45,6 +45,11 @@
         <div class="col-md-1"></div>
         <div class="col-md-10" style="margin-top: 20px;">
 
+            <center>
+                    {{ HTML::image('images/logo_big.png') }}
+            </center>
+            <br>
+
             @if(Session::get('logout_successful'))
                 <div class="alert alert-success fade in" role="alert">
                     <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
