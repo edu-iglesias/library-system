@@ -24,21 +24,22 @@
         <div class="input-group col-md-12" >
 
 			<div class="table-responsive" >
-		        <table  id="tablesorter-table" border=0 align="center" style="color:black" class="table table-striped display tablesorter sortable" id="main-table" border=0>
+		        <table  id="colvixTable" border=0 class="table table-bordered">
 			        <thead>
 			            <tr>
 			                <th>Book ID</th>
 			                <th>Title</th>
 			                <th>Author</th>
 			                <th>Quantity</th>
+			                <th>Date Borrowed</th>
 			                <th>Action</th>
 			            </tr>
 			        </thead>
-
 			        <tbody>
 
 			            @if(count($books)==0)
 			                <tr><td colspan="6" align="center">No Books to Display</td></tr>
+			                
 			            @endif
 
 			            @foreach($books as $book)
@@ -48,14 +49,13 @@
 			                    <td>{{ $book->title }}</td>
 			                    <td>{{ $book->author }}</td>
 			                    <td>{{ $book->quantity }}</td>
-			                    <td> <button class="btn btn-danger" @if( $book->quantity  <= 0) disabled @endif type="button" data-toggle="modal" data-target="{{ '#book_' . $book->bookID }}"  data-toggle="tooltip" data-placement="top"  title="Deactivate User"><i class="fa fa-reply"></i></i> Return </button> </td>
+			                    <td>{{ $book->created_at }}</td>
+			                    <td> <button class="btn btn-danger" @if( $book->quantity  <= 0) disabled @endif type="button" data-toggle="modal" data-target="{{ '#book_' . $book->bookID }}"  data-toggle="tooltip" data-placement="top"  title="Return Book"><i class="fa fa-reply"></i></i> Return </button> </td>
 			                </tr>     
 
 			            @endforeach
 			        </tbody>
 		    </table>
-
-		    <center>{{ $books->links(); }}</center>
 		</div>
 	</div>
 

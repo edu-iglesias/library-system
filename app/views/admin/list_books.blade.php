@@ -20,7 +20,7 @@
         {{ Session::forget('status') }}
     @endif
 
-    <div class="table-responsive" >
+    <div class="form-create col-md-12" >
         <table  id="colvixTable" border=0 class="table table-bordered">
         <thead>
             <tr>
@@ -49,8 +49,8 @@
 
                     <td> {{ $b->author }} </td>
                     <td> 
-                        <a href="/admin/books/edit/{{ $b->bookId  }}" class="btn btn-warning" data-toggle="tooltip" data-placement="top"  title="Edit Book Information"><i class="fa fa-pencil-square-o"></i></a>
-                        <!-- <a href="#" class="btn btn-default" data-toggle="tooltip" data-placement="top"  title="Deactivate Book"><i class="fa fa-trash"></i></a> -->
+                        <a href="/admin/books/edit/{{ $b->bookId  }}" class="btn btn-info" data-toggle="tooltip" data-placement="top"  title="Edit Book Information"><i class="fa fa-pencil-square-o"></i></a>
+                       <!--  <a href="#" class="btn btn-default" data-toggle="tooltip" data-placement="top"  title="Deactivate Book"><i class="fa fa-trash"></i></a> -->
                     </td>
                 </tr>     
 

@@ -74,9 +74,14 @@
                                 <i class="fa fa-user"></i> {{ Session::get('admin_firstname') . " " . Session::get('admin_lastname') }}  <b class="caret" style="margin-top: 0;"></b>
                             </a>
 
+
+
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="/admin/logout"><i class="fa fa-power-off"></i> Log Out</a>
+                                    <a href="#t"><i class="fa fa-user-secret"></i> Edit Profile</a>
+                                </li>
+                                <li>
+                                    <a href="/admin/logout"><i class="fa fa-sign-out"></i></i> Log Out</a>
                                 </li>
                             </ul>
                         </li>
@@ -96,6 +101,7 @@
                 <br/>
 
                 <div class="container no-print" style="width: 100%">
+                    <br>
                     <p class="text-muted" style="text-align: center; font-size: 11px;">Developed by 
                         <a href="#" title="#">Web Synergy 2.0</a><br/>
                         Powered by <a href="http://laravel.com/" style="color: #f47063">Laravel</a>.
@@ -106,11 +112,18 @@
 
         <!-- JavaScript -->
 
+
+
         <script type="text/javascript">  
             $(document).ready(function () {  
                 $('.dropdown-toggle').dropdown();  
             });  
        </script>  
+
+        {{ HTML::script('js/bootstrap.min.js') }}
+
+
+
        
        @yield('footer')
 

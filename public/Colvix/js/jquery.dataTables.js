@@ -4812,29 +4812,29 @@
 	 */
 	function _fnLog( settings, level, msg, tn )
 	{
-		msg = 'DataTables warning: '+
-			(settings!==null ? 'table id='+settings.sTableId+' - ' : '')+msg;
+		// msg = 'DataTables warning: '+
+		// 	(settings!==null ? 'table id='+settings.sTableId+' - ' : '')+msg;
 	
-		if ( tn ) {
-			msg += '. For more information about this error, please see '+
-			'http://datatables.net/tn/'+tn;
-		}
+		// if ( tn ) {
+		// 	msg += '. For more information about this error, please see '+
+		// 	'http://datatables.net/tn/'+tn;
+		// }
 	
-		if ( ! level  ) {
-			// Backwards compatibility pre 1.10
-			var ext = DataTable.ext;
-			var type = ext.sErrMode || ext.errMode;
+		// if ( ! level  ) {
+		// 	// Backwards compatibility pre 1.10
+		// 	var ext = DataTable.ext;
+		// 	var type = ext.sErrMode || ext.errMode;
 	
-			if ( type == 'alert' ) {
-				alert( msg );
-			}
-			else {
-				throw new Error(msg);
-			}
-		}
-		else if ( window.console && console.log ) {
-			console.log( msg );
-		}
+		// 	if ( type == 'alert' ) {
+		// 		alert( msg );
+		// 	}
+		// 	else {
+		// 		throw new Error(msg);
+		// 	}
+		// }
+		// else if ( window.console && console.log ) {
+		// 	console.log( msg );
+		// }
 	}
 	
 	

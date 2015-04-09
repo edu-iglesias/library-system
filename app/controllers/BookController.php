@@ -20,7 +20,7 @@ class BookController extends BaseController {
 
 		$books = DB::table('books')->select(array('books.bookID as bookId', 'books.title as title', 'books.quantity as quantity', 'books.author as author'))
          
-         ->paginate(10);
+         ->get();
 
 		return View::make('admin.list_books')->with('books',$books);
 	}
@@ -70,7 +70,7 @@ class BookController extends BaseController {
 
 	public function listBooks()
 	{
-		$books = DB::table('books')->paginate(10);
+		$books = DB::table('books')->get();
 
 		return View::make('user.list_of_books')->with('books',$books);
 	}
@@ -206,7 +206,7 @@ class BookController extends BaseController {
 					 ->join('borrows', 'books.bookID', '=', 'borrows.book_id')
 					 ->where('borrows.user_id','=', Auth::id())
 
-		->paginate(10);
+		->get();
 
 		//return $books;
 
@@ -354,17 +354,10 @@ class BookController extends BaseController {
 		// }
 	}
 
-
 	public function search() 
 	{
 
 	    $q = Input::get('search');
-	
-
 		return View::make('admin.list_search')->with('title',$n);
-
-
-
 	}
-
 }

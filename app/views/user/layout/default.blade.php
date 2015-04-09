@@ -5,8 +5,6 @@
         {{HTML::style('css/user/bootstrap.min.css');}}
         {{HTML::style('css/glyphicons.css');}}
         <!-- {{HTML::style('css/ionic.css');}} -->
-        {{HTML::script('js/user/jquery-1.11.0.min.js');}}
-        {{HTML::script('js/user/bootstrap.min.js');}}
 
         {{ HTML::style('css/font-awesome.css') }}
         {{ HTML::style('css/bootstrap.css') }}
@@ -14,7 +12,25 @@
         {{ HTML::style('css/bootstrap-theme.min.css') }}
         {{ HTML::style('css/sb-admin.css') }}
         {{ HTML::style('css/custom.css') }}
-        {{ HTML::style('css/table_sorter/bootstrap-sortable.css') }}
+
+        {{ HTML::script('http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') }}
+        {{ HTML::style('colvix/css/jquery.dataTables.css')}}
+        {{ HTML::style('colvix/css/dataTables.colVis.css')}}
+        {{ HTML::style('colvix/css/shCore.css')}}
+        
+        {{ HTML::script('colvix/js/jquery.js')}}
+        {{ HTML::script('colvix/js/jquery.dataTables.js')}}
+        {{ HTML::script('colvix/js/dataTables.colVis.js')}}
+        {{ HTML::script('colvix/js/shCore.js')}}
+        {{ HTML::script('colvix/js/demo.js')}}
+
+        <script type="text/javascript" language="javascript" class="init">
+            $(document).ready(function() {
+                $('#colvixTable').DataTable( {
+                    dom: 'C<"clear">lfrtip'
+                } );
+            } );
+        </script>
 
         <script>
             $(function () {
@@ -48,8 +64,8 @@
                         <!-- <li class="#active"><a href="#" class=""><i class="fa fa-user"></i> Profile</a></li>
                          --><li><a href="/user/books"><i class="fa fa-th-list"></i></span> List of Books</a></li>
                         <li><a href="/user/books/borrowed"><i class="fa fa-book"></i> Borrowed Books</a></li>
-                        <!-- <li><a href="/user/books/archieves"><i class="fa fa-archive"></i> Archives</a></li>
-                         -->
+                        <li><a href="/user/archives"><i class="fa fa-archive"></i> Archives</a></li>
+                        
 
                          <!-- <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
@@ -78,11 +94,7 @@
                     });  
                </script>  
 
-                {{ HTML::script('http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') }}
                 {{ HTML::script('js/bootstrap.min.js') }}
-                {{ HTML::script('js/jquery-1.10.2.js') }}
 
-                {{ HTML::script('js/table_sorter/bootstrap-sortable.js') }}
-                {{ HTML::script('js/table_sorter/moment.min.js') }}
     </body>
 </html>

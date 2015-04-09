@@ -68,6 +68,9 @@ Route::post('/user/books','BookController@doBorrowBooks');
 Route::get('/user/books/borrowed','BookController@borrowedBooks');
 Route::post('/user/books/borrowed','BookController@returnBooks');
 
+Route::get('/user/archives','UserController@userArchives');
+
+
 
 //  - -- - - - -- - -END OF USER - - -- - -- //
 

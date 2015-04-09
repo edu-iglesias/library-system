@@ -20,21 +20,10 @@
 	      	{{ Session::forget('borrowing_success') }}
 	    @endif
 
-		<div>
-			<div class="input-group col-md-3">
-		      	<input type="text" class="form-control" placeholder="Search for...">
-		      	<span class="input-group-btn">
-		        	<button class="btn btn-default" type="button">Go!</button>
-		      </span>
-		    </div>
-		</div>
-
-		<hr>
-
         <div class="input-group col-md-12" >
 
 			<div class="table-responsive" >
-		        <table  id="tablesorter-table" border=0 align="center" style="color:black" class="table table-striped display tablesorter sortable" id="main-table" border=0>
+		        <table  id="colvixTable" border=0 class="table table-bordered">
 			        <thead>
 			            <tr>
 			                <th>Book ID</th>
@@ -64,8 +53,6 @@
 			            @endforeach
 			        </tbody>
 		    </table>
-
-		    <center>{{ $books->links(); }}</center>
 		</div>
 	</div>
 

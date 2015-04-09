@@ -28,7 +28,7 @@
         {{ Session::forget('success_user_created') }}
     @endif
 
-	<div class="table-responsive" >
+	<div class="form-create col-md-12" >
         <table  id="colvixTable" border=0 class="table table-bordered">
         <thead>
             <tr>
@@ -78,8 +78,6 @@
             @endforeach
         </tbody>
     </table>
-
-    <center>{{ $users->links(); }}</center>
 
     @foreach($users as $user)       
 

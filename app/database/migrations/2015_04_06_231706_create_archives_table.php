@@ -18,8 +18,8 @@ class CreateArchivesTable extends Migration {
 			$table->integer('book_id');
 			$table->integer('user_id');
 			$table->integer('quantity');
-			$table->date('date_borrowed');
-			$table->date('date_returned');
+			$table->dateTime('date_borrowed');
+			$table->dateTime('date_returned');
 			$table->timestamps();
 		});
 	}

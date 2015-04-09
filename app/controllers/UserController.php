@@ -208,4 +208,13 @@ class UserController extends BaseController {
 		return Redirect::to('/user');
 	}
 
+	public function userArchives()
+	{
+		$archives = Archive::where('user_id','=', Auth::id())
+			->join('books', 'archives.book_id', '=', 'books.bookID')
+			->get();
+
+		return View::make('user.user_archives')->with('archives', $archives);
+	}
+
 }
