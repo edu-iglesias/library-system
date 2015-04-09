@@ -2,6 +2,12 @@
 
 @section('content')
 
+	<ul class="clearing-thumbs" data-clearing>
+	  <li><a href="path/to/your/img"><img src="path/to/your/img-th"></a></li>
+	  <li><a href="path/to/your/img"><img src="path/to/your/img-th"></a></li>
+	  <li><a href="path/to/your/img"><img src="path/to/your/img-th"></a></li>
+	</ul>
+
 	<div class="form-create col-md-12" style="margin-top:65px">
         <div class="input-group col-md-12" >
 			<div class="table-responsive" >

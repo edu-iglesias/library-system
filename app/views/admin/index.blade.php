@@ -17,7 +17,7 @@
 
         <style type="text/css">
 	        body {
-	            background-color: #333333;
+	            background-color: #d1cdcd;
 	        }
 	    </style>
        
@@ -29,6 +29,11 @@
 
 			<!-- Creates the form -->
 		    {{ Form::open(array('class' => 'form-signin', 'role' => 'form')) }}
+
+		    <center>
+			    	{{ HTML::image('images/logo_big.png') }}
+			</center>
+			<br>
 
 		    	@if(Session::get('login_failure'))
 			      	<div class="alert alert-danger fade in" role="alert">
@@ -49,7 +54,8 @@
 				{{ Form::text('userId', null, array('class' => 'form-control', 'placeholder' => 'Username')) }}
 				{{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Password')) }}
 				<br/>
-				{{ Form::submit('Log in', array('class' => 'btn btn-lg btn-success btn-block')) }}
+				{{ Form::submit("Log in", array('class' => 'btn btn-lg btn-primary btn-block')) }}
+
 			{{ Form::close() }}
 		</div>
 
