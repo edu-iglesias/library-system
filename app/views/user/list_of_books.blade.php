@@ -29,7 +29,9 @@
 			                <th>Book ID</th>
 			                <th>Title</th>
 			                <th>Author</th>
-			                <th>Quantity</th>
+			                <th>In</th>
+			            	<th>Out</th>
+			                <th>Total Quantity</th>
 			                <th>Action</th>
 			            </tr>
 			        </thead>
@@ -47,6 +49,18 @@
 			                    <td>{{ $book->title }}</td>
 			                    <td>{{ $book->author }}</td>
 			                    <td>{{ $book->quantity }}</td>
+			                    <td>
+			                    <?php
+			                    	$borrowedBooks =  Borrow::where('book_id','=',$book->bookID)->get();
+			                    	$total = 0;
+			                    	foreach ($borrowedBooks as $borrowedBook) 
+			                    	{
+			                    		$total = $total + $borrowedBook->quantity;
+			                    	}
+			               			echo $total;
+			                    ?>
+			                	</td>
+			                    <td>{{ $total + $book->quantity }}</td>
 			                    <td> <button class="btn btn-primary" @if( $book->quantity  <= 0) disabled @endif type="button" data-toggle="modal" data-target="{{ '#book_' . $book->bookID }}"  data-toggle="tooltip" data-placement="top"  title="Deactivate User"><i class="fa fa-book"></i> Borrow </button> </td>
 			                </tr>     
 
