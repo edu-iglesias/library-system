@@ -38,14 +38,14 @@
         @yield('header')
     </head>
     <body style="margin: 10px;">
-       
+       @if(Auth::user())
                 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
                     <ul class="nav navbar-nav">
                         <!-- <li style="margin-right: -100px;"><img src="../images/banner.png" style="margin: 10px; width: 45%;"></li> -->
-                        <li><a class="navbar-brand" href="#">Library System</a></li>
+                        <li><a class="navbar-brand" href="#">OPPAS LIBRARY SYSTEM</a></li>
                         
-                        <li class="#active"><a href="#" class=""><i class="fa fa-user"></i> Profile</a></li>
-                        <li><a href="/user/books"><i class="fa fa-th-list"></i></span> List of Books</a></li>
+                        <!-- <li class="#active"><a href="#" class=""><i class="fa fa-user"></i> Profile</a></li>
+                         --><li><a href="/user/books"><i class="fa fa-th-list"></i></span> List of Books</a></li>
                         <li><a href="/user/books/borrowed"><i class="fa fa-book"></i> Borrowed Books</a></li>
                         <!-- <li><a href="/user/books/archieves"><i class="fa fa-archive"></i> Archives</a></li>
                          -->
@@ -67,7 +67,7 @@
                     <a href="/user/logout" title="Logout" style="float: right;"><button class="btn btn-danger" style="margin: 10px;"><i class="fa fa-sign-out"></i></button></a>
                     @endif
                 </nav>
-
+                @endif
                 @yield('content')
 
                 <script type="text/javascript">  

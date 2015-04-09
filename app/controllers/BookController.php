@@ -120,9 +120,6 @@ class BookController extends BaseController {
 			
 			$book->save();
 
-
-	        
-
 	        return Redirect::to('/admin/books');
 	    }
 	    else
@@ -137,6 +134,7 @@ class BookController extends BaseController {
 
 		$maxQuantity =  Input::get('maxQuantity');
 
+		
 		$numberOfBooksBorrowed = DB::table('borrows')->where("user_id","=",Auth::id())->sum('quantity');
 		$numberOfBooksYouCanStillBorrow = 4 - $numberOfBooksBorrowed;
 		
@@ -152,7 +150,7 @@ class BookController extends BaseController {
 		{
 			$maxQuantity = $numberOfBooksYouCanStillBorrow;
 		}
-		
+		$max1  = $maxQuantity;
 		// Validate Book ID if it is a number
 
 		if ( is_numeric(Input::get('bookID')) ) 
@@ -162,7 +160,7 @@ class BookController extends BaseController {
 
 			$rules = array(		
 				'bookID'    => "required|numeric",
-				'quantity'  =>"Required|min:1|max:$maxQuantity|numeric|digits:1",
+				'quantity'  =>"Required|min:1|max:$max1|numeric|digits:1",
 			);
 
 			// Check other validations like quantity must be a number

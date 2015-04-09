@@ -13,7 +13,25 @@
         {{ HTML::style('css/bootstrap-theme.min.css') }}
         {{ HTML::style('css/sb-admin.css') }}
         {{ HTML::style('css/custom.css') }}
-        {{ HTML::style('css/table_sorter/bootstrap-sortable.css') }}
+
+        {{ HTML::script('http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') }}
+        {{ HTML::style('colvix/css/jquery.dataTables.css')}}
+        {{ HTML::style('colvix/css/dataTables.colVis.css')}}
+        {{ HTML::style('colvix/css/shCore.css')}}
+        
+        {{ HTML::script('colvix/js/jquery.js')}}
+        {{ HTML::script('colvix/js/jquery.dataTables.js')}}
+        {{ HTML::script('colvix/js/dataTables.colVis.js')}}
+        {{ HTML::script('colvix/js/shCore.js')}}
+        {{ HTML::script('colvix/js/demo.js')}}
+
+        <script type="text/javascript" language="javascript" class="init">
+            $(document).ready(function() {
+                $('#colvixTable').DataTable( {
+                    dom: 'C<"clear">lfrtip'
+                } );
+            } );
+        </script>
         
         @yield('header')
     </head>
@@ -29,35 +47,34 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/">Library System</a>
+                    <a class="navbar-brand" href="#">OPPAS Library System</a>
                 </div>
 
                 <!-- div for side and top menu -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <!-- Side Menu -->
                     <ul class="nav navbar-nav side-nav">
-                        <li class="active">
-                            <a href="/" style="border-bottom: solid 1px rgba(0, 0, 0, 0.2);">Dashboard</a>
+                        <li class="">
+                            <a href="/admin/users" style="border-bottom: solid 1px rgba(0, 0, 0, 0.2);"> <i class="fa fa-user"></i> Manage Users </a>
                         </li>
                         <li class="">
-                            <a href="/admin/users" style="border-bottom: solid 1px rgba(0, 0, 0, 0.2);">Manage User</a>
+                            <a href="/admin/books" style="border-bottom: solid 1px rgba(0, 0, 0, 0.2);"><i class="fa fa-book"></i> Manage Books</a>
                         </li>
                         <li class="">
-                            <a href="/admin/books" style="border-bottom: solid 1px rgba(0, 0, 0, 0.2);">Manage Book</a>
+                            <a href="/admin/books" style="border-bottom: solid 1px rgba(0, 0, 0, 0.2);"><i class="fa fa-table"></i> Borrowed Books</a>
+                        </li>
+                        <li class="">
+                            <a href="/admin/archives" style="border-bottom: solid 1px rgba(0, 0, 0, 0.2);"><i class="fa fa-archive"></i> View Archives</a>
                         </li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right navbar-user">
                         <li class="dropdown user-dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-user"></i> Edu Iglesias  <b class="caret" style="margin-top: 0;"></b>
+                                <i class="fa fa-user"></i> {{ Session::get('admin_firstname') . " " . Session::get('admin_lastname') }}  <b class="caret" style="margin-top: 0;"></b>
                             </a>
 
                             <ul class="dropdown-menu">
-                                <li>
-                                    <a href="/user/editprof/#"> <i class="fa fa-user"></i> Edit Profile</a>
-                                </li>
-                                <li class="divider"></li>
                                 <li>
                                     <a href="/admin/logout"><i class="fa fa-power-off"></i> Log Out</a>
                                 </li>
@@ -94,13 +111,6 @@
                 $('.dropdown-toggle').dropdown();  
             });  
        </script>  
-
-        {{ HTML::script('http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') }}
-        {{ HTML::script('js/bootstrap.min.js') }}
-        {{ HTML::script('js/jquery-1.10.2.js') }}
-
-        {{ HTML::script('js/table_sorter/bootstrap-sortable.js') }}
-        {{ HTML::script('js/table_sorter/moment.min.js') }}
        
        @yield('footer')
 

@@ -26,6 +26,9 @@ class AdminController extends BaseController {
 				return  Redirect::back();
 			}
 
+            $user = User::find(Auth::id());
+            Session::put('admin_firstname',$user->Fname);
+            Session::put('admin_lastname',$user->Lname);
 			return Redirect::to('/admin/dashboard');
     	}
     	else

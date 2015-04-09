@@ -12,3 +12,10 @@ body {
   background-color: #F5FEF2;
   padding-bottom: 0px;
 }
+
+.ColVis_collection
+{
+	margin-left:-4% !important;
+	margin-top:1% !important;
+}
+

@@ -4,7 +4,7 @@
 
 	<table border=0 width="100%">
 		<tr>
-			<td><h2>List of Users</h2></td>
+			<td><h2><i class="fa fa-users"></i> List of Users</h2></td>
 			<td align="right"><a href="users/create" class="btn btn-success" ><i class="fa fa-user-plus"></i> Add User</a></td>
 		</tr>
 	</table>
@@ -29,7 +29,7 @@
     @endif
 
 	<div class="table-responsive" >
-        <table  id="tablesorter-table"  align="center" style="color:black" class="table table-striped display tablesorter sortable" id="main-table" border=0>
+        <table  id="colvixTable" border=0 class="table table-bordered">
         <thead>
             <tr>
                 <th>User ID</th>
@@ -62,12 +62,12 @@
 
                     </td>
                     <td>
-                    	<a href="/admin/users/edit/{{ $user->id  }}" class="btn btn-warning" data-toggle="tooltip" data-placement="top"  title="Edit User Information"><i class="fa fa-pencil-square-o"></i></a>
+                    	<a href="/admin/users/edit/{{ $user->id  }}" class="btn btn-info" data-toggle="tooltip" data-placement="top"  title="Edit User Information"><i class="fa fa-pencil-square-o"></i></a>
                     	
                     	@if($user->status == 1)
-                        	<button class="btn btn-default" type="button" data-toggle="modal" data-target="{{ '#deactivate_' . $user->id }}"  data-toggle="tooltip" data-placement="top"  title="Deactivate User"><i class="fa fa-ban"></i></button>
+                        	<button class="btn btn-danger" type="button" data-toggle="modal" data-target="{{ '#deactivate_' . $user->id }}"  data-toggle="tooltip" data-placement="top"  title="Deactivate User"><i class="fa fa-ban"></i></button>
                         @else
-                        	<button class="iframe btn btn-default" type="button" data-toggle="modal" data-target="{{ '#activate_' . $user->id }}"  data-toggle="tooltip" data-placement="top"  title="Activate User"><i class="fa fa-check"></i></button>
+                        	<button class="iframe btn btn-success" type="button" data-toggle="modal" data-target="{{ '#activate_' . $user->id }}"  data-toggle="tooltip" data-placement="top"  title="Activate User"><i class="fa fa-check"></i></button>
                         @endif
 
 

@@ -2,7 +2,7 @@
 
 @section('content')
 
-	<h2> Add Book(s)</h2>
+	<h2> Add Book</h2>
 	<hr>
 
 	@if(Session::get('success_book_created'))
@@ -42,7 +42,7 @@
                     @endforeach
                 </select>
 		    </div>
-		    <input type="text" id="selected" name="selected" value="1"/>
+		    <input type="hidden" id="selected" name="selected" value="1"/>
 		</div>
 
 		<div class="forms col-md-12">
